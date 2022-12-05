@@ -1,14 +1,14 @@
 <template>
   <v-container>
     <div class="flex justify-center py-20">
-      <div class="grid grid-cols-12 gap-y-20 gap-x-20 max-w-screen-lg mx-auto">
+      <div class="grid grid-cols-12 gap-y-20 gap-x-8 max-w-screen-lg mx-auto">
         <div class="col-span-6" v-for="service in services" :key="service.id">
           
-          <div :class="`${service.color_bg}` + ' w-full h-2'"></div>
+          <div class="w-full bg-red-100 h-2"></div>
           
           
           <span
-            :class="`${service.color}` + ' block text-2xl font-bold mb-5 w-8/12 my-4'"
+            class="block text-3xl font-bold mb-5 w-8/12 my-4"
           >
             {{ service.excerpt }}
           </span>

@@ -1,29 +1,32 @@
 <template>
   <div>
     <!-- TITLE AND DESCRIPTION -->
-    <div class="py-20 bg-purple-300">
-      <div class="max-w-screen-xl mx-auto">
-        <span class="block text-5xl mb-4">
-          {{ service.title }}
-        </span>
+    <div class="py-20 bg-red-300">
+      <v-container>
+        <div class="max-w-screen-xl mx-auto">
+          <span class="block text-5xl mb-4">
+            {{ service.title }}
+          </span>
 
-        <span
-          class="block text-3xl w-10/12 mb-8"
-          v-html="service.description"
-        ></span>
-      </div>
+          <span
+            class="block text-3xl w-10/12 mb-8"
+            v-html="service.description"
+          ></span>
+        </div>
+      </v-container>
     </div>
     <!-- TITLE AND DESCRIPTION -->
 
     <div class="max-w-screen-xl mx-auto py-20">
+      <v-container>
       <!-- BLOCKS -->
-        <div>
-          <BlockComponent
-            v-for="block in service.blocks"
-            :key="block.id"
-            :block="block"
-          />
-        </div>
+      <div>
+        <BlockComponent
+          v-for="block in service.blocks"
+          :key="block.id"
+          :block="block"
+        />
+      </div>
       <!-- BLOCKS -->
 
       <!-- CLIENTS -->
@@ -46,6 +49,7 @@
         </div>
       </div>
       <!-- CLIENTS -->
+      </v-container>
     </div>
   </div>
 </template>
@@ -65,6 +69,8 @@ export default {
             "blocks.image",
             "blocks.features_list.title",
             "blocks.features_list.description",
+            'blocks.projects',
+            // 'blocks.projects.description',
             "clients.clients_id.name",
             "clients.clients_id.logo",
           ],

@@ -2,6 +2,7 @@
   <v-app>
     <NavHeader />
     <Nuxt />
+    <NavFooter />
   </v-app>
 </template>
 

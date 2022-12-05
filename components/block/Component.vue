@@ -9,7 +9,7 @@
             <v-img :src="$config.apiUrlV2 + '/assets/' + block.image" height="400" contain></v-img>
         </div>
 
-        <div v-if="['Features List'].includes(block.format)" class="grid grid-cols-12 gap-x-10">
+        <div v-if="['Features List'].includes(block.format)" class="grid grid-cols-12 gap-x-20 pt-12">
             <span class="block text-2xl col-span-12 font-medium mb-4">{{ block.title }}</span>
             <span class="block text-xl col-span-6 mb-8" v-html="block.description"></span>
             <div class="col-span-6">
@@ -23,6 +23,16 @@
                 <span class="block w-8/12" v-html="feature.description"></span>
             </div>
         </div>
+
+        <!-- <div v-if="['Projects'].includes(block.format)">
+            <span class="text-3xl">Algunos de nuestros proyectos</span>
+
+            {{ block }}
+
+            <div v-for="project in block.projects" :key="project.id">
+                {{ project.title }}
+            </div>
+        </div> -->
     </div>
 </template>
 

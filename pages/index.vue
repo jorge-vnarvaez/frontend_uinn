@@ -1,6 +1,8 @@
 <template>
   <div>
     <TypesServices />
+
+    <TypesTestimonies />
   </div>
 </template>
 
