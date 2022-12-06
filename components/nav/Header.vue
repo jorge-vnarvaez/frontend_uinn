@@ -1,5 +1,5 @@
 <template>
-   <nav class="bg-neutral-900">
+   <nav :style="bg" v-if="!$vuetify.breakpoint.mobile">
         <v-container>
             <div class="max-w-screen-xl mx-auto text-white flex justify-between">
                 <!-- Logo -->
@@ -52,6 +52,11 @@ export default {
                     href: '/aprende-innovacion',
                 },
             ]
+        }
+    },
+    computed: {
+        bg() {
+            return 'background-color: ' + this.$store.getters['ui/getActiveColor']
         }
     }
 };

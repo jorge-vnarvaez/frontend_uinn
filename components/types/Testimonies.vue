@@ -1,10 +1,9 @@
 <template>
-  <v-container>
-    <div class="max-w-screen-lg mx-auto pb-32">
+  <v-container v-if="testimonies">
+    <div v-if="testimonies.length > 0" class="max-w-screen-lg mx-auto pb-32">
       <div class="flex justify-between">
         <!-- LAST TESTIMONY -->
         <v-card width="320" elevation="0">
-          
             <v-img
               :src="$config.apiUrlV2 + '/assets/' + lastTestimony.image"
               alt=""
@@ -44,10 +43,13 @@
 
 <script>
 export default {
-  async fetch() {
+  async mounted() {
     await this.$store.dispatch("testimonies/loadTestimonies");
   },
   computed: {
+    testimonies() {
+      return this.$store.getters['testimonies/getTestimonies'];
+    },
     lastTestimony() {
       return this.$store.getters["testimonies/getLastTestimony"];
     },

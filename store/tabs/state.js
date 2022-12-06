@@ -1,3 +1,3 @@
 export default () => ({
-    testimonies: []
+    activeTab: null
 })
