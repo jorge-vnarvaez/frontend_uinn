@@ -9,7 +9,7 @@
           </span>
 
           <span
-            class="block text-3xl w-10/12 mb-8 text-slate-800"
+            class="block text-3xl w-full lg:w-10/12 mb-8 text-slate-800"
             v-html="service.description"
           ></span>
         </div>
@@ -20,7 +20,7 @@
     <div class="max-w-screen-xl mx-auto py-20">
       <v-container>
         <!-- BLOCKS -->
-        <div class="grid grid-cols-12">
+        <div class="grid grid-cols-12 gap-y-4 lg:gap-x-20">
           <BlockComponent
             v-for="block in service.blocks"
             :key="block.id"
@@ -72,16 +72,29 @@ export default {
             "blocks.title",
             "blocks.description",
             "blocks.detail",
-            "blocks.size",
             "blocks.mobile_size",
+            "blocks.size",
+            "blocks.mobile_y_axis_padding",
+            "blocks.y_axis_padding",
+            "blocks.mobile_y_axis_margin",
+            "blocks.y_axis_margin",
+            "blocks.mobile_title_font_size",
+            "blocks.title_font_size",
+            "blocks.mobile_font_size",
+            "blocks.font_size",
             "blocks.parent_block",
             "blocks.format",
             "blocks.image",
             "blocks.features_list.icon",
+            "blocks.features_list.icon_image",
             "blocks.features_list.title",
             "blocks.features_list.description",
+            "blocks.labels_list.id",
+            "blocks.labels_list.title",
+            "blocks.team_members.photo",
             "blocks.projects.*.*",
             "blocks.groups.*.*",
+            "blocks.childs.*.*",
             "clients.clients_id.name",
             "clients.clients_id.logo",
           ],

@@ -10,8 +10,8 @@ export default {
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - uinn',
-    title: 'uinn',
+    titleTemplate: '%s',
+    title: 'UINN',
     htmlAttrs: {
       lang: 'en'
     },
@@ -33,6 +33,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/spacingToClass.js' },
     { src: '~/plugins/objectToQueryString.js' },
     { src: '~/plugins/fontawesome.js' },
   ],
@@ -45,7 +46,15 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxt/postcss8',
+    '@nuxtjs/moment',
   ],
+
+  // Moment js config
+  moment: {
+    defaultLocale: 'es',
+    locales: ['es'],
+    defaultTimezone: 'America/Santiago'
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

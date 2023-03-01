@@ -5,7 +5,4 @@ export default {
     getLastTestimony(state) {
         return state.testimonies[0]
     },
-    getClientsWithTestimonies(state) {
-        return state.testimonies.map(testimony => testimony.client)
-    }
 }

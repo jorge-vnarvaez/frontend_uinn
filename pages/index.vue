@@ -1,5 +1,7 @@
 <template>
   <div>
+    <InfoHeroSection />
+
     <TypesServices />
 
     <TypesTestimonies />
@@ -8,6 +10,14 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  head() {
+    return {
+      title: 'UINN - Unidad de Innovación',
+    };
+  },
+  mounted() {
+    this.$store.commit('ui/setActiveColor', '#000000');
+  }
 }
 </script>

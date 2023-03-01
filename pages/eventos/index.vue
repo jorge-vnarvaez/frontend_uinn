@@ -1,7 +1,8 @@
 <template>
   <div class="py-12">
-    <InfoNoticiasFeatured />
-    <InfoNoticiasList />
+    <InfoEventosFeatured />
+
+    <InfoEventosList />
   </div>
 </template>
 
@@ -9,26 +10,23 @@
 export default {
   head() {
     return {
-      title: "Noticias",
+      title: "Eventos",
       meta: [
         {
           hid: "description",
           name: "description",
-          content: "Noticias UINN",
+          content: "Eventos UINN",
         },
       ],
     };
   },
   async mounted() {
-    this.$store.dispatch("noticias/loadNoticias");
+    this.$store.dispatch("eventos/loadEvents");
     this.$store.commit('ui/setActiveColor', '#000000');
   },
-  computed: {
-    noticias() {
-      return this.$store.getters["noticias/getNoticias"];
-    },
-  },
-};
+}
 </script>
 
-<style></style>
+<style>
+
+</style>

@@ -1,3 +1,4 @@
 export default () => ({
-    activeTab: null
+    activeTab: null,
+    activeInnerTab: null,
 })

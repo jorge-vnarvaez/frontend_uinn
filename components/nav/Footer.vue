@@ -1,56 +1,111 @@
 <template>
   <footer class="bg-slate-600 py-8">
     <v-container>
-      <div class="flex">
-        <!-- UINN FOOTER -->
-        <div class="flex flex-col text-white">
-          <span>LOGO</span>
-          <span class="font-bold">Hagamos Innovación</span>
-          <span class="block w-10/12 mt-1 text-sm">
-            Somos una organización dedicada al desarrollo de proyectos de
-            innovación en empresas</span
+      <div class="max-w-screen-xl mx-auto">
+        <div class="grid grid-cols-12 gap-y-12 lg:gap-y-0">
+          <div class="flex flex-col text-white col-span-12 lg:col-span-4">
+            <v-img
+              src="/img/uinn_logo_w.png"
+              width="91"
+              height="55"
+              contain
+              class="mb-8"
+            ></v-img>
+            <span class="font-bold text-lg">Hagamos Innovación</span>
+            <span class="block w-10/12 mt-1 text-sm text-slate-100">
+              Somos una organización dedicada al desarrollo de proyectos de
+              innovación en empresas.</span
+            >
+
+            <!-- SOCIAL MEDIA -->
+            <div class="mt-4 flex space-x-6">
+              <!-- LINKEDIN -->
+              <a href="https://www.linkedin.com/company/uinn/" target="_blank">
+                <font-awesome-icon
+                  icon="fa-brands fa-linkedin-in"
+                  class="w-8 h-8 text-white"
+                  
+                />
+              </a>
+              <!-- LINKEDIN -->
+
+              <!-- TWITTER -->
+              <font-awesome-icon icon="fa-brands fa-twitter" class="w-8 h-8" />
+              <!-- TWITTER -->
+
+              <!-- INSTAGRAM -->
+              <a href="https://www.instagram.com/uinnudec/" target="_blank">
+                <font-awesome-icon
+                  icon="fa-brands fa-instagram"
+                  class="w-8 h-8 text-white"
+                />
+              </a>
+              <!-- INSTAGRAM -->
+
+              <!-- FACEBOOK -->
+              <font-awesome-icon
+                icon="fa-brands fa-facebook-f"
+                class="w-8 h-8"
+              />
+              <!-- FACEBOOK -->
+            </div>
+            <!-- SOCIAL MEDIA -->
+          </div>
+          <!-- UINN FOOTER -->
+
+          <!-- META LINKS -->
+          <div
+            class="text-white grid grid-cols-12 col-span-12 lg:col-span-8 gap-y-8 lg:gap-y-0"
           >
+            <!-- NOSOTROS -->
+            <div class="flex flex-col cursor-pointer col-span-6 lg:col-span-4">
+              <span class="block mb-2 font-bold text-lg">Nosotros</span>
+              <div class="flex flex-col text-sm space-y-2">
+              <nuxt-link :to="{ path: '/acerca_nuestro' }"><span class="text-white">Acerca nuestro</span></nuxt-link>
+                <nuxt-link to="noticias"><span class="text-white">Noticias</span></nuxt-link>
+                <nuxt-link to="eventos"><span class="text-white">Eventos</span></nuxt-link>
+                <span>Nuestros proyectos</span>
+              </div>
+            </div>
+            <!-- NOSOTROS -->
+
+            <!-- SERVICIOS -->
+            <div class="flex flex-col col-span-6 lg:col-span-4">
+              <span class="block mb-2 font-bold text-lg">Servicios</span>
+              <div class="flex flex-col text-sm space-y-2">
+                <nuxt-link :to="{ path: '/servicios/innovacion-empresarial' }"><span class="text-white">Innovación Empresarial</span></nuxt-link>
+                <nuxt-link :to="{ path: '/servicios/formacion-ejecutiva' }"><span class="text-white">Formación Ejecutiva</span></nuxt-link>
+
+              </div>
+            </div>
+            <!-- SERVICIOS -->
+
+            <!-- TEMATICAS -->
+            <div class="flex flex-col col-span-6 lg:col-span-4">
+              <span class="block mb-2 font-bold text-lg">Temáticas</span>
+              <div class="flex flex-col text-sm space-y-2">
+                <span>Innovación empresarial</span>
+                <span>Políticas públicas</span>
+                <span>Startups</span>
+                <span>Emprendimiento</span>
+              </div>
+            </div>
+            <!-- TEMATICAS -->
+          </div>
+          <!-- META LINKS -->
         </div>
-        <!-- UINN FOOTER -->
 
-        <!-- META LINKS -->
-        <div class="flex justify-between text-white w-full">
-          <!-- NOSOTROS -->
-          <div class="flex flex-col">
-            <span class="block mb-2 font-bold">Nosotros</span>
-            <div class="flex flex-col text-sm space-y-2">
-              <span>Acerca nuestro</span>
-              <span>Noticias</span>
-              <span>Eventos</span>
-              <span>Nuestros proyectos</span>
-            </div>
-          </div>
-          <!-- NOSOTROS -->
+        <v-divider color="white" class="mt-20 mb-6"></v-divider>
 
-          <!-- SERVICIOS -->
-          <div class="flex flex-col">
-            <span class="block mb-2 font-bold">Servicios</span>
-            <div class="flex flex-col text-sm space-y-2">
-              <span>Gestión de Innovación</span>
-              <span>Ecosistemas de Innovación</span>
-              <span>Formación ejecutiva</span>
-            </div>
-          </div>
-          <!-- SERVICIOS -->
+        <div
+          class="w-full text-slate-400 flex flex-col lg:flex-row justify-center align-center lg:space-x-4"
+        >
+          <span class="font-semibold">Uinn.cl</span>
+          <v-divider vertical class="bg-slate-400"></v-divider>
+          <span class="font-semibold">2019-2022</span>
 
-          <!-- TEMATICAS -->
-          <div class="flex flex-col">
-            <span class="block mb-2 font-bold">Temáticas</span>
-            <div class="flex flex-col text-sm space-y-2">
-              <span>Innovación empresarial</span>
-              <span>Políticas públicas</span>
-              <span>Startups</span>
-              <span>Emprendimiento</span>
-            </div>
-          </div>
-          <!-- TEMATICAS -->
+          <span>Todos los derechos reservados &#174;</span>
         </div>
-        <!-- META LINKS -->
       </div>
     </v-container>
   </footer>
@@ -60,5 +115,4 @@
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>
