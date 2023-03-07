@@ -4,12 +4,12 @@
     <div class="py-20" :style="`background-color: ${service.color_bg}`">
       <v-container>
         <div class="max-w-screen-xl mx-auto">
-          <span class="block text-5xl mb-4 text-neutral-800">
+          <span class="block text-2xl lg:text-5xl mb-4 text-neutral-800">
             {{ service.title }}
           </span>
 
           <span
-            class="block text-3xl w-full lg:w-10/12 mb-8 text-slate-800"
+            class="block text-xl lg:text-3xl w-full lg:w-10/12 mb-8 text-slate-800"
             v-html="service.description"
           ></span>
         </div>
@@ -18,16 +18,17 @@
     <!-- TITLE AND DESCRIPTION -->
 
     <div class="max-w-screen-xl mx-auto py-20">
+
       <v-container>
         <!-- BLOCKS -->
-        <div class="grid grid-cols-12 gap-y-4 lg:gap-x-20">
+        <v-row>
           <BlockComponent
             v-for="block in service.blocks"
             :key="block.id"
             :block="block"
           >
           </BlockComponent>
-        </div>
+        </v-row>
         <!-- BLOCKS -->
 
         <!-- CLIENTS -->
@@ -67,6 +68,9 @@ export default {
             "color",
             "color_bg",
             "blocks.id",
+            "blocks.visibility",
+            "blocks.link_to",
+            "blocks.outlined",
             "blocks.text_color",
             "blocks.align",
             "blocks.title",
@@ -78,6 +82,10 @@ export default {
             "blocks.y_axis_padding",
             "blocks.mobile_y_axis_margin",
             "blocks.y_axis_margin",
+            "blocks.mobile_margin_right",
+            "blocks.margin_right",
+            "blocks.mobile_margin_bottom",
+            "blocks.margin_bottom",
             "blocks.mobile_title_font_size",
             "blocks.title_font_size",
             "blocks.mobile_font_size",
@@ -89,12 +97,13 @@ export default {
             "blocks.features_list.icon_image",
             "blocks.features_list.title",
             "blocks.features_list.description",
+            "blocks.features_list.bg_color",
             "blocks.labels_list.id",
             "blocks.labels_list.title",
             "blocks.team_members.photo",
             "blocks.projects.*.*",
             "blocks.groups.*.*",
-            "blocks.childs.*.*",
+            "blocks.childs.*.*.*",
             "clients.clients_id.name",
             "clients.clients_id.logo",
           ],

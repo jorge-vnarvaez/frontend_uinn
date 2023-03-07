@@ -1,9 +1,9 @@
 <template>
   <div class="py-20">
-    <v-container>
+    <v-container class="max-w-screen-xl mx-auto">
       <div class="flex justify-center">
         <div
-          class="grid grid-cols-12 gap-y-20 gap-x-0 lg:gap-x-8 max-w-screen-xl mx-auto"
+          class="grid grid-cols-12 gap-y-20 gap-x-0 lg:gap-x-8"
         >
           <div
             class="col-span-12 lg:col-span-6"
@@ -44,20 +44,12 @@
 
 <script>
 export default {
-  async fetch() {
-    await this.$store.dispatch("services/loadServices");
-  },
-  activated() {
-    // Call fetch again if last fetch more than 30 sec ago
-    if (this.$fetchState.timestamp <= Date.now() - 30000) {
-      this.$fetch();
+  props: {
+    services: {
+      type: Array,
+      default: () => []
     }
-  },
-  computed: {
-    services() {
-      return this.$store.getters["services/getServices"];
-    },
-  },
+  }
 };
 </script>
 
