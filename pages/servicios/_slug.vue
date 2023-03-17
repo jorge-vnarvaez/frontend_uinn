@@ -1,24 +1,6 @@
 <template>
   <div>
-    <!-- TITLE AND DESCRIPTION -->
-    <div class="py-20" :style="`background-color: ${service.color_bg}`">
-      <v-container>
-        <div class="max-w-screen-xl mx-auto">
-          <span class="block text-2xl lg:text-5xl mb-4 text-neutral-800">
-            {{ service.title }}
-          </span>
-
-          <span
-            class="block text-xl lg:text-3xl w-full lg:w-10/12 mb-8 text-slate-800"
-            v-html="service.description"
-          ></span>
-        </div>
-      </v-container>
-    </div>
-    <!-- TITLE AND DESCRIPTION -->
-
     <div class="max-w-screen-xl mx-auto py-20">
-
       <v-container>
         <!-- BLOCKS -->
         <v-row>
@@ -37,17 +19,33 @@
             v-if="service.clients.length > 0"
             class="flex flex-col align-center"
           >
-            <span class="block mb-10 text-3xl">Nuestros Clientes</span>
+            <span class="block mb-4 text-3xl">Clientes</span>
 
-            <div class="flex flex-wrap justify-center align-center space-x-0 lg:space-x-16">
-              <div v-for="(data, index) in service.clients" :key="index">
+            <span class="text-lg text-center"
+              >Lorem ipsum dolor sit amet, consetetur sadipscing.</span
+            >
+
+            <v-row class="mt-8">
+              <v-col
+                v-for="(client, index) in service.clients"
+                :key="index"
+                cols="12"
+                :lg="12 / service.clients.length"
+                align="center"
+              >
                 <v-img
-                  v-if="data.clients_id.logo"
-                  :src="$config.apiUrlV2 + '/assets/' + data.clients_id.logo"
+                  v-if="client.clients_id.logo"
+                  :src="$config.apiUrlV2 + '/assets/' + client.clients_id.logo"
+                  :width="$vuetify.breakpoint.mobile ? '75%' : '100%'"
+                  :height="$vuetify.breakpoint.mobile ? '75%' : '100%'"
                   contain
                 ></v-img>
-              </div>
-            </div>
+
+                <span class="block mt-2 text-2xl font-semibold">
+                  {{ client.clients_id.name_abbrevation }}
+                </span>
+              </v-col>
+            </v-row>
           </div>
         </div>
         <!-- CLIENTS -->
@@ -64,6 +62,7 @@ export default {
         params: {
           fields: [
             "title",
+            "illustration",
             "description",
             "color",
             "color_bg",
@@ -72,6 +71,7 @@ export default {
             "blocks.link_to",
             "blocks.outlined",
             "blocks.text_color",
+            "blocks.mobile_align",
             "blocks.align",
             "blocks.title",
             "blocks.description",
@@ -105,6 +105,7 @@ export default {
             "blocks.groups.*.*",
             "blocks.childs.*.*.*",
             "clients.clients_id.name",
+            "clients.clients_id.name_abbrevation",
             "clients.clients_id.logo",
           ],
           filter: {
@@ -121,11 +122,15 @@ export default {
     };
   },
   mounted() {
-    if(this.service) {
-      this.$store.commit('ui/setActiveColor', this.service.color_bg);
+    this.$store.commit("ui/setActiveParentType", "service");
+
+    if (this.service) {
+      this.$store.commit("ui/setActiveColor", this.service.color);
+      this.$store.commit("services/setCurrentService", this.service);
     }
   },
 };
 </script>
 
-<style></style>
+<style>
+</style>

@@ -3,7 +3,7 @@
         :color="block.bg_color"  
         :to="{ path: block.link_to }" 
         :outlined="block.outlined"
-        class="rounded-lg w-full"
+        class="rounded-lg w-full capitalize"
     >
         <span :style="{ 'color': block.text_color}">{{ block.title }}</span>
     </v-btn>

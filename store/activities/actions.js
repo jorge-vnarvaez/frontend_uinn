@@ -1,6 +1,6 @@
 export default {
-    async loadNoticias({ commit }) {
-        let route = '/items/posts'
+    async loadActivities({ commit }) {
+        let route = '/items/activities'
         let params = this.$objectToQueryString({
             fields: ['*.*'],
             sort: ['-date_published']
@@ -11,7 +11,7 @@ export default {
         const { data } = await fetch(fetchString).then(res => res.json())
 
 
-        commit('updateNoticias', { data: data })
+        commit('setActivities', { data: data })
 
     }
 }

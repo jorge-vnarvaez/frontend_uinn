@@ -3,7 +3,7 @@
     <v-img
       :src="$config.apiUrlV2 + '/assets/' + image"
       max-width="100%"
-      height="200"
+      height="auto"
       contain
     ></v-img>
   </div>

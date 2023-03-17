@@ -1,5 +1,5 @@
 <template>
-    <span class="text-3xl text-slate-700">{{ block.title }}</span>
+    <span class="text-lg lg:text-3xl text-slate-700">{{ block.title }}</span>
 </template>
 
 <script>

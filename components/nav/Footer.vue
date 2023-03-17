@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-slate-600 py-8">
+  <footer class="bg-indigo-600 py-8">
     <v-container>
       <div class="max-w-screen-xl mx-auto">
         <div class="grid grid-cols-12 gap-y-12 lg:gap-y-0">
@@ -24,7 +24,6 @@
                 <font-awesome-icon
                   icon="fa-brands fa-linkedin-in"
                   class="w-8 h-8 text-white"
-                  
                 />
               </a>
               <!-- LINKEDIN -->
@@ -74,23 +73,10 @@
               <span class="block mb-2 font-bold text-lg">Servicios</span>
               <div class="flex flex-col text-sm space-y-2">
                 <nuxt-link :to="{ path: '/servicios/innovacion-empresarial' }"><span class="text-white">Innovación Empresarial</span></nuxt-link>
-                <nuxt-link :to="{ path: '/servicios/formacion-ejecutiva' }"><span class="text-white">Formación Ejecutiva</span></nuxt-link>
 
               </div>
             </div>
             <!-- SERVICIOS -->
-
-            <!-- TEMATICAS -->
-            <div class="flex flex-col col-span-6 lg:col-span-4">
-              <span class="block mb-2 font-bold text-lg">Temáticas</span>
-              <div class="flex flex-col text-sm space-y-2">
-                <span>Innovación empresarial</span>
-                <span>Políticas públicas</span>
-                <span>Startups</span>
-                <span>Emprendimiento</span>
-              </div>
-            </div>
-            <!-- TEMATICAS -->
           </div>
           <!-- META LINKS -->
         </div>
@@ -98,10 +84,10 @@
         <v-divider color="white" class="mt-20 mb-6"></v-divider>
 
         <div
-          class="w-full text-slate-400 flex flex-col lg:flex-row justify-center align-center lg:space-x-4"
+          class="w-full text-white flex flex-col lg:flex-row justify-center align-center lg:space-x-4"
         >
           <span class="font-semibold">Uinn.cl</span>
-          <v-divider vertical class="bg-slate-400"></v-divider>
+          <v-divider vertical class="bg-white"></v-divider>
           <span class="font-semibold">2019-2022</span>
 
           <span>Todos los derechos reservados &#174;</span>

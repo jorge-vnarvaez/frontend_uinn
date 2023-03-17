@@ -3,13 +3,13 @@
         :cols="block.mobile_size" 
         :lg="block.size"
         :offset="$vuetify.breakpoint.mobile ? 0: block.align == 'center' ? (12 - block.size) / 2 : 0"
-        :align="block.align"
+        :align="$vuetify.breakpoint.mobile ? block.mobile_align : block.align"
         :class="[
         block.mobile_y_axis_padding, 
         block.y_axis_padding,
         block.mobile_y_axis_margin,
         block.y_axis_margin,
-        'pa-0'
+       'pa-0'
         ]"
         :style="{ 
           'margin-right': $vuetify.breakpoint.mobile ? $getMarginValue(block.mobile_margin_right) : $getMarginValue(block.margin_right),
@@ -26,7 +26,12 @@
               $data._extra_large_font_size, 
               $data._2_extra_large_font_size, 
               $data._3_extra_large_font_size, 
-              $data._4_extra_large_font_size
+              $data._4_extra_large_font_size,
+              $data._5_extra_large_font_size,
+              $data._6_extra_large_font_size,
+              $data._7_extra_large_font_size,
+              $data._8_extra_large_font_size,
+              $data._9_extra_large_font_size,
             ]"></span> 
             <!-- DON'T REMOVE, THIS SPAN IS USED TO PRELOAD ALL FONT SIZES FROM TAILWIND CSS IN JIT MODE -->
 
@@ -68,7 +73,10 @@
 
         <!-- PROJECTS SLIDE -->
         <div v-if="['Projects'].includes(block.format)" class="py-10">
-          <span class="block text-4xl mb-4 text-gray-900 font-medium">Algunos de nuestros proyectos</span>
+          <div class="flex flex-col align-center">
+            <span class="block text-3xl lg:text-6xl mb-4 text-gray-900 font-medium text-center w-full lg:w-6/12">Algunos de nuestros proyectos</span>
+            <span class="block text-lg text-center mt-6 mb-12">Esto lo logramos mediante la integración de estrategia, diseño y gestión tecnológica.</span>
+          </div>
           <BlockProjects :block="block"></BlockProjects>
         </div>
         <!-- PROJECTS SLIDE -->
@@ -179,6 +187,11 @@ export default {
       _2_extra_large_font_size: 'text-2xl lg:text-2xl',
       _3_extra_large_font_size: 'text-3xl lg:text-3xl',
       _4_extra_large_font_size: 'text-4xl lg:text-4xl',
+      _5_extra_large_font_size: 'text-5xl lg:text-5xl',
+      _6_extra_large_font_size: 'text-6xl lg:text-6xl',
+      _7_extra_large_font_size: 'text-7xl lg:text-7xl',
+      _8_extra_large_font_size: 'text-8xl lg:text-8xl',
+      _9_extra_large_font_size: 'text-9xl lg:text-9xl',
     }
   },
   props: {

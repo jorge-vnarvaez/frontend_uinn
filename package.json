@@ -9,7 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/fontawesome-svg-core": "C:/Users/Jorge/Desktop/@fortawesome/fontawesome-svg-core",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/pro-solid-svg-icons": "^6.2.1",
     "@fortawesome/vue-fontawesome": "^2.0.9",
@@ -24,6 +24,8 @@
     "vuetify": "^2.6.10"
   },
   "devDependencies": {
+    "@mdi/font": "^7.1.96",
+    "@mdi/js": "^7.1.96",
     "@nuxt/postcss8": "^1.1.3",
     "@nuxtjs/vuetify": "^1.12.3",
     "autoprefixer": "^10.4.13",
