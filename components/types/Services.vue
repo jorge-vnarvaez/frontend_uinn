@@ -1,45 +1,33 @@
 <template>
-  <div class="py-10">
+  <div class="pb-48">
     <v-container class="max-w-screen-xl mx-auto p-0">
-      <div class="flex justify-center">
-        <div
-          class="grid grid-cols-12 gap-y-8 lg:gap-y-8 gap-x-0 lg:gap-x-8"
-        >
-          <v-card
-            class="col-span-12 lg:col-span-6 p-4 lg:p-8 bg-slate-50 rounded-2xl shadow-lg shadow-slate-200 grid grid-cols-12"
-            v-for="service in services"
-            :key="service.id"
-          >
+      <v-row>
+        <v-col cols="12" lg="4" v-for="service in services" :key="service.id">
+          <v-card 
+            class="border border-slate-200"
+            rounded="xl"
+            height="449"
+            outlined>
+            <div>
+              <div class="py-8 px-10 ">
+                  <v-img :src="$config.apiUrlV2 + '/assets/' + service.illustration" width="112" height="78" contain></v-img>
 
-            <div class="col-span-9 lg:col-span-8">
-              <span class="block text-base lg:text-xl font-semibold mb-5 w-7/12 my-4 h-32 z-10">
-                {{ service.excerpt }}
-              </span>
+                  <span class="block my-4 w-40 font-bold font-gotham">{{ service.title }}</span>
 
-              <v-btn
-                :color="service.color"
-                :to="`servicios/${service.slug}`"
-                class="text-capitalize text-xs lg:text-sm text-white z-10"
-                depressed
-                small
-              >
-                {{ service.title }}
-              </v-btn>
-            </div>
+                  <span v-html="service.description" class="block w-8/12 h-[124px] text-slate-800"></span>
+              </div>
 
-            <div class="col-span-3 lg:col-span-4">
-                <v-img 
-                  v-if="service.illustration"
-                  :src="$config.apiUrlV2 + '/assets/' + service.illustration" 
-                  :height="$vuetify.breakpoint.mobile ? 140 : 221"
-                  :width="$vuetify.breakpoint.mobile ? 310 :  214"
-                  contain
-                ></v-img>
-            </div>
+              <v-divider class="mt-8 bg-slate-100"></v-divider>
               
+              <div class="px-10 h-16 flex align-center">
+                  <nuxt-link :to="'/servicios/' + service.slug">
+                    <v-icon class="border border-slate-600 rounded-full p-1 cursor-pointer">mdi-plus</v-icon>
+                  </nuxt-link>
+              </div>
+            </div>
           </v-card>
-        </div>
-      </div>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -49,9 +37,9 @@ export default {
   props: {
     services: {
       type: Array,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 

@@ -2,18 +2,20 @@
     <v-col 
         :cols="block.mobile_size" 
         :lg="block.size"
-        :offset="$vuetify.breakpoint.mobile ? 0: block.align == 'center' ? (12 - block.size) / 2 : 0"
+        :offset="block_align"
         :align="$vuetify.breakpoint.mobile ? block.mobile_align : block.align"
         :class="[
-        block.mobile_y_axis_padding, 
-        block.y_axis_padding,
-        block.mobile_y_axis_margin,
-        block.y_axis_margin,
-       'pa-0'
+          block.mobile_y_axis_padding, 
+          block.y_axis_padding,
+          block.mobile_y_axis_margin,
+          block.y_axis_margin,
+          block.padding ? block.right_padding : 'pa-0',
         ]"
         :style="{ 
+          'margin-top':$vuetify.breakpoint.mobile ? $getMarginValue(block.mobile_margin_top) : $getMarginValue(block.margin_top),
           'margin-right': $vuetify.breakpoint.mobile ? $getMarginValue(block.mobile_margin_right) : $getMarginValue(block.margin_right),
-          'margin-bottom':$vuetify.breakpoint.mobile ? $getMarginValue(block.mobile_margin_bottom) : $getMarginValue(block.margin_bottom) }"
+          'margin-bottom':$vuetify.breakpoint.mobile ? $getMarginValue(block.mobile_margin_bottom) : $getMarginValue(block.margin_bottom) 
+        }"
       >
         <!-- TITLE AND TEXT -->
         <div v-if="['Title + Text'].includes(block.format)">
@@ -38,6 +40,12 @@
             <BlockTitleText :block="block"></BlockTitleText>
         </div>
         <!-- TITLE AND TEXT -->
+
+        <!-- DIVIDER -->
+        <div v-if="['Divider'].includes(block.format)">
+            <BlockDivider :block="block"></BlockDivider>
+        </div>
+        <!-- DIVIDER -->
 
         <!-- BUTTON -->
         <div v-if="['Button'].includes(block.format)">
@@ -74,8 +82,8 @@
         <!-- PROJECTS SLIDE -->
         <div v-if="['Projects'].includes(block.format)" class="py-10">
           <div class="flex flex-col align-center">
-            <span class="block text-3xl lg:text-6xl mb-4 text-gray-900 font-medium text-center w-full lg:w-6/12">Algunos de nuestros proyectos</span>
-            <span class="block text-lg text-center mt-6 mb-12">Esto lo logramos mediante la integración de estrategia, diseño y gestión tecnológica.</span>
+            <span class="block text-3xl font-gotham mb-4 text-gray-900 font-medium text-center w-full lg:w-6/12 uppercase">Algunos de nuestros proyectos</span>
+            <span class="block text-lg text-center mt-2 mb-12">Esto lo logramos mediante la integración de estrategia, diseño y gestión tecnológica.</span>
           </div>
           <BlockProjects :block="block"></BlockProjects>
         </div>
@@ -141,35 +149,62 @@
           </div>
           <!-- GROUP -->
 
+          <!-- GROUP SLIDER -->
+          <div v-if="['Group Slider'].includes(block.format)">
+            <v-container class="max-w-screen-xl mx-auto">
+                <BlockGroupSlider :blocks="block.childs"></BlockGroupSlider>
+            </v-container>
+          </div>
+
+          <!-- GROUP SLIDER -->
+
+
           <!-- TEAM MEMBERS -->
           <div v-if="['Team Members'].includes(block.format)">
-              <div class="grid grid-cols-12 lg:gap-x-16 gap-y-8">
-                <div v-for="team_member in block.team_members" :key="team_member.id" class="col-span-12 lg:col-span-4">
-                  <div class="w-full">
-                      <v-img 
-                      :src="$config.apiUrlV2 + '/assets/' + team_member.photo"
-                      max-width="100%"
-                      min-width="100%"
-                      >
-                      </v-img>
-                  </div>
+              <v-row>
+                <v-col v-for="team_member in block.team_members" :key="team_member.id" cols="12" lg="4">
+                  <v-card class="border-2 bg-slate-50 border-slate-200" height="600" rounded="xl" outlined>
+                      <div class="pa-6">
+                        <div class="w-full">
+                          <v-img
+                          class="mb-6" 
+                          :src="$config.apiUrlV2 + '/assets/' + team_member.photo"
+                          width="208"
+                          height="208"
+                          max-width="100%"
+                          min-width="100%"
+                          contain
+                          ></v-img>
+                        </div>
 
-                  <span class="block mt-2 font-bold text-lg">{{ team_member.name }}</span>
-                  <span class="block mb-4">{{ team_member.position }}</span>
+                        <div>
+                          <span class="block mt-2 text-center font-gotham font-bold text-lg lg:text-xl">{{ team_member.name }}</span>
+                          <span class="block mt-2 text-center font-inter text-[18px]">{{ team_member.position }}</span>
+                        </div>
+                      </div>
+
+                      <v-divider class="my-4"></v-divider>
+
+                      <div class="pa-6">
+                        <div class="flex flex-wrap">
+                          <div 
+                              v-for="tag, index in team_member.tags" 
+                              :key="tag.labels_id.id" >
+                            <v-chip 
+                              class="mr-4 mb-4"
+                              outlined label  :color="index == 0 ? 'purple' : 'black'">
+                              {{ tag.labels_id.title }}
+                            </v-chip>
+                          </div>
+                        </div>
+                      </div>
+                  </v-card>
+                 
+
+                 
                   
-                  <div class="flex flex-col lg:flex-row lg:flex-wrap">
-                    <div 
-                        v-for="tag, index in team_member.tags" 
-                        :key="tag.labels_id.id" >
-                      <v-chip 
-                        class="mr-4 mb-4"
-                        outlined label  :color="index == 0 ? 'purple' : 'black'">
-                        {{ tag.labels_id.title }}
-                      </v-chip>
-                    </div>
-                  </div>
-                </div>
-              </div>  
+                </v-col>
+              </v-row>  
           </div>
         <!-- TEAM MEMBERS -->
   </v-col>
@@ -224,6 +259,14 @@ export default {
     activeInnerTabClass() {
       return (id) => {
         return this.activeInnerTab == id ? 'text-slate-800 font-medium' : 'text-slate-400';
+      }
+    },
+    block_align() {
+      switch(this.$vuetify.breakpoint.mobile) {
+        case true:
+          return this.block.mobile_align == 'center' ? (12 - this.block.mobile_size) / 2 : 0 
+        case false:
+          return this.block.align == 'center' ? (12 - this.block.size) / 2 : 0 
       }
     }
   }

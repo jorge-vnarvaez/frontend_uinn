@@ -3,7 +3,7 @@
     <div class="max-w-screen-xl mx-auto py-20">
       <v-container>
         <!-- BLOCKS -->
-        <v-row>
+        <v-row align="center">
           <BlockComponent
             v-for="block in service.blocks"
             :key="block.id"
@@ -61,6 +61,8 @@ export default {
       .get(`${$config.apiUrlV2}/items/services`, {
         params: {
           fields: [
+            "header.hero_image",
+            "header.blocks.*.*.*",
             "title",
             "illustration",
             "description",
@@ -80,6 +82,7 @@ export default {
             "blocks.size",
             "blocks.mobile_y_axis_padding",
             "blocks.y_axis_padding",
+            "blocks.right_padding",
             "blocks.mobile_y_axis_margin",
             "blocks.y_axis_margin",
             "blocks.mobile_margin_right",

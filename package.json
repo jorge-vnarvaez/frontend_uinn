@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    
     "@fortawesome/fontawesome-svg-core": "C:/Users/Jorge/Desktop/@fortawesome/fontawesome-svg-core",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/pro-solid-svg-icons": "^6.2.1",

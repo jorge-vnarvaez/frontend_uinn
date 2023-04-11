@@ -1,13 +1,13 @@
 <template>
   <div>
     <div
-      class="flex space-x-20 justify-center align-center font-semibold"
+      class="flex space-x-20 justify-center align-center"
     >
       <nuxt-link
         v-for="item in list"
         :key="item.id"
         :to="item.href"
-        class="text-white"
+        class="text-slate-900"
       >
         <span @mouseover="servicesCard = false">
           {{ item.title }}

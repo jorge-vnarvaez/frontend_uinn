@@ -1,5 +1,8 @@
 <template>
-    <span class="text-lg lg:text-3xl font-gotham font-bold">{{ block.title }}</span>
+<div>
+    <v-divider></v-divider>
+</div>  
+  <!-- <v-divider></v-divider> -->
 </template>
 
 <script>

@@ -1,13 +1,13 @@
 <template>
-  <div :style="bg">
-    <nav :style="$vuetify.breakpoint.mobile ? ui_settings : {}">
+  <div v-if="page.header">
+    <nav class="shadow-2xl" :style="$vuetify.breakpoint.mobile ? ui_settings : {}">
       <v-container>
         <div class="max-w-screen-xl mx-auto">
           <div class="flex align-center justify-between">
             <!-- LOGO -->
             <div @click="home" class="cursor-pointer z-30">
               <v-img
-                src="/img/uinn_logo_w.png"
+                src="/uinn-logo.png"
                 width="75"
                 height="40"
                 contain
@@ -25,13 +25,13 @@
 
             <!-- SEARCH -->
             <div class="cursor-pointer" v-if="!$vuetify.breakpoint.mobile">
-              <v-icon class="text-white">mdi-magnify</v-icon>
+              <v-icon class="text-slate-900">mdi-magnify</v-icon>
             </div>
             <!-- SEARCH -->
 
             <!-- OPEN MENU -->
             <div class="cursor-pointer" v-if="$vuetify.breakpoint.mobile && !navigationDrawerState" @click="$store.commit('ui/setNavigationDrawerState', true)">
-              <v-icon class="text-white">mdi-menu</v-icon>
+              <v-icon class="text-slate-900">mdi-menu</v-icon>
             </div>
             <!-- OPEN MENU -->
           </div>
@@ -46,34 +46,56 @@
     <!-- LIVE EVENT -->
 
     <!-- HEADER HERO -->
-    <div
-      class="max-w-screen-xl mx-auto"
-      v-if="is_page && !blank_page"
-      :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
-    >
-      <div class="text-white h-screen flex align-center" v-if="page.header">
-        <v-container class="px-6">
-          <v-row>
-            <BlockComponent
-              v-for="block in page.header.blocks"
-              :key="block.id"
-              :block="block"
-            ></BlockComponent>
-          </v-row>
-        </v-container>
+    <div :style="page.header.hero_image == null ? { height: '100vh' } : bg">
+      <div
+        class="max-w-screen-xl mx-auto"
+        v-if="is_page && !blank_page"
+        :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
+      >
+        <div class="text-white h-screen flex align-center" v-if="page.header">
+          <v-container class="px-6">
+            <v-row>
+              <BlockComponent
+                v-for="block in page.header.blocks"
+                :key="block.id"
+                :block="block"
+              ></BlockComponent>
+            </v-row>
+          </v-container>
+        </div>
       </div>
     </div>
     <!-- HEADER HERO -->
 
     <!-- HEADER SERVICE -->
-    <div
-      class="max-w-screen-xl mx-auto"
-      v-if="!is_page && !blank_page"
-      :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
-    >
+    <div v-if="!is_page && !blank_page">
       <NavServiceHeader />
     </div>
     <!-- HEADER SERVICE -->
+
+    <!-- HERO IMAGE -->
+    <div v-if="is_page && page.hero">
+      <div :style="{ backgroundColor: page.hero.bg_color, height: '100vh'}">
+        <div
+          class="max-w-screen-xl mx-auto"
+          v-if="is_page && !blank_page"
+          :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
+        >
+          <div class="text-white h-screen flex align-center" v-if="page.hero">
+            <v-container class="px-6">
+              <v-row>
+                <BlockComponent
+                  v-for="block in page.hero.blocks"
+                  :key="block.id"
+                  :block="block"
+                ></BlockComponent>
+              </v-row>
+            </v-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- HERO IMAGE -->
   </div>
 </template>
 
@@ -85,19 +107,29 @@ export default {
       navItems: [
         {
           id: 2,
-          title: "Servicios",
-          href: "/#servicios",
+          title: "Inicio",
+          href: "/",
         },
         {
           id: 3,
+          title: "Acerca nuestro",
+          href: "/acerca_nuestro",
+        },
+        {
+          id: 4,
+          title: "Productos y servicios",
+          href: "/#servicios",
+        },
+        {
+          id: 5,
           title: "Actividades",
           href: "/actividades",
         },
         {
-          id: 4,
-          title: "Aprende Innovación",
-          href: "/aprende-innovacion",
-        },
+          id: 6,
+          title: "Contacto",
+          href: "/contacto",
+        }
       ],
     };
   },

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="page">
+  <div v-if="page && page.hero">
     <v-container class="max-w-screen-xl mx-auto" v-if="page.blocks">
       <v-row>
         <BlockComponent
@@ -12,8 +12,6 @@
     </v-container>
     
     <TypesServices :services="page.services" id="servicios" />
-
-    <InfoInicioFeedback v-if="page" :page="page" />
   </div>
 </template>
 
@@ -27,6 +25,7 @@ export default {
   },
   async fetch() {
     await this.$store.dispatch("pages/loadPage", "inicio");
+    
     this.$store.commit(
       "ui/setIndexHeroImage",
       this.$config.apiUrlV2 + "/assets/" + this.page.header.hero_image.id
