@@ -57,6 +57,7 @@
 <script>
 export default {
   async asyncData({ $axios, $config, route }) {
+
     const { data } = await $axios
       .get(`${$config.apiUrlV2}/items/services`, {
         params: {
@@ -105,6 +106,7 @@ export default {
             "blocks.labels_list.title",
             "blocks.team_members.photo",
             "blocks.projects.*.*",
+            "blocks.courses.*.*",
             "blocks.groups.*.*",
             "blocks.childs.*.*.*",
             "clients.clients_id.name",
@@ -113,13 +115,12 @@ export default {
           ],
           filter: {
             slug: {
-              _eq: route.params.slug,
+              _eq: route.params.href,
             },
           },
         },
       })
       .then((res) => res.data);
-
     return {
       service: data[0],
     };
