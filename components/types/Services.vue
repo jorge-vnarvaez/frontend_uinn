@@ -20,7 +20,7 @@
               <v-divider class="mt-8 bg-slate-100"></v-divider>
               
               <div class="px-10 h-16 flex align-center">
-                  <nuxt-link :to="'/servicios/' + service.slug">
+                  <nuxt-link :to="'/servicios/' + service.href">
                     <v-icon class="border border-slate-600 rounded-full p-1 cursor-pointer">mdi-plus</v-icon>
                   </nuxt-link>
               </div>
