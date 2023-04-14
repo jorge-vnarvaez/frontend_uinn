@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-indigo-600 py-8">
+  <footer class="bg-black py-8">
     <v-container>
       <div class="max-w-screen-xl mx-auto">
         <div class="grid grid-cols-12 gap-y-12 lg:gap-y-0">
@@ -61,9 +61,8 @@
               <span class="block mb-2 font-bold text-lg">Nosotros</span>
               <div class="flex flex-col text-sm space-y-2">
               <nuxt-link :to="{ path: '/acerca_nuestro' }"><span class="text-white">Acerca nuestro</span></nuxt-link>
-                <nuxt-link to="noticias"><span class="text-white">Noticias</span></nuxt-link>
-                <nuxt-link to="eventos"><span class="text-white">Eventos</span></nuxt-link>
-                <span>Nuestros proyectos</span>
+                <nuxt-link to="actividades"><span class="text-white">Noticias</span></nuxt-link>
+                <nuxt-link to="actividades"><span class="text-white">Eventos</span></nuxt-link>
               </div>
             </div>
             <!-- NOSOTROS -->
