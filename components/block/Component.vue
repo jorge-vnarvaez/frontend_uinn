@@ -89,11 +89,47 @@
         </div>
         <!-- PROJECTS SLIDE -->
 
+        <!-- COURSES SLIDE -->
+
+        <div v-if="['Courses List'].includes(block.format)">
+            <v-row>
+              <v-col cols="12" lg="3">
+                  <div id="courses-wrapper">
+                    <div v-for="course, index in block.courses" :key="course.id">
+                      <span 
+                        @click="setActiveCourse(index)"
+                        :class="[
+                        'block py-2 text-slate-400 cursor-pointer',
+                        index == activeCourse ? 'font-bold text-slate-600' : ''
+                        ]">
+                        {{ course.name }}
+                      </span>
+                    </div>
+                  </div>
+              </v-col>
+
+              <v-col cols="12" lg="9" class="bg-slate-100 rounded-lg pl-6 py-6">
+                <div id="courses-wrapper">
+                  <span class="block mb-8 uppercase font-gotham font-bold text-[24px]">{{ block.courses[activeCourse].name }}</span>
+                  <span>{{ block.courses[activeCourse].description }}</span>
+                </div>
+              </v-col>
+            </v-row>
+
+          <!-- <v-container>
+            <v-row>
+              <v-col cols="12" :lg="12 - block.size" class="bg-red-200">
+                Testing..
+              </v-col>
+            </v-row>
+          </v-container> -->
+        </div>
+
           <!-- TAB -->
           <div v-if="['Tab'].includes(block.format)">
               <span 
               @click="setActiveTab(block.id)" 
-              :class="[activeTabClass(block.id), block.mobile_font_size, block.font_size, 'cursor-pointer block']">
+              :class="[activeTabClass(block.id), block.mobile_title_font_size, block.title_font_size, 'cursor-pointer block font-gotham']">
                 {{ block.title }}
               </span>
           </div>
@@ -152,7 +188,9 @@
           <!-- GROUP SLIDER -->
           <div v-if="['Group Slider'].includes(block.format)">
             <v-container class="max-w-screen-xl mx-auto">
-                <BlockGroupSlider :blocks="block.childs"></BlockGroupSlider>
+                  <v-row>
+                    <BlockGroupSlider :blocks="block.childs"></BlockGroupSlider>
+                  </v-row>
             </v-container>
           </div>
 
@@ -199,10 +237,6 @@
                         </div>
                       </div>
                   </v-card>
-                 
-
-                 
-                  
                 </v-col>
               </v-row>  
           </div>
@@ -242,7 +276,10 @@ export default {
     },
     setActiveInnerTab(block_id) {
       this.$store.commit('tabs/setActiveInnerTab', block_id)
-    }
+    },
+    setActiveCourse(course_id) {
+      this.$store.commit('courses/setActiveCourse', course_id)
+    },
   },
   computed: {
     activeTab() {
@@ -261,6 +298,9 @@ export default {
         return this.activeInnerTab == id ? 'text-slate-800 font-medium' : 'text-slate-400';
       }
     },
+    activeCourse() {
+      return this.$store.getters['courses/getActiveCourse'];
+    },
     block_align() {
       switch(this.$vuetify.breakpoint.mobile) {
         case true:
@@ -274,5 +314,26 @@ export default {
 </script>
 
 <style lang="postcss">
+#courses-wrapper {
+  @apply h-80;
+  @apply overflow-y-auto;
+  @apply pr-8;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+#courses-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+#courses-wrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+#courses-wrapper::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 5px;
+}
+
 
 </style>
