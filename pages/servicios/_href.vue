@@ -12,44 +12,12 @@
           </BlockComponent>
         </v-row>
         <!-- BLOCKS -->
-
-        <!-- CLIENTS -->
-        <div v-if="service.clients" class="mt-12">
-          <div
-            v-if="service.clients.length > 0"
-            class="flex flex-col align-center"
-          >
-            <span class="block mb-4 text-3xl">Clientes</span>
-
-            <span class="text-lg text-center"
-              >Lorem ipsum dolor sit amet, consetetur sadipscing.</span
-            >
-
-            <v-row class="mt-8">
-              <v-col
-                v-for="(client, index) in service.clients"
-                :key="index"
-                cols="12"
-                :lg="12 / service.clients.length"
-                align="center"
-              >
-                <v-img
-                  v-if="client.clients_id.logo"
-                  :src="$config.apiUrlV2 + '/assets/' + client.clients_id.logo"
-                  :width="$vuetify.breakpoint.mobile ? '75%' : '100%'"
-                  :height="$vuetify.breakpoint.mobile ? '75%' : '100%'"
-                  contain
-                ></v-img>
-
-                <span class="block mt-2 text-2xl font-semibold">
-                  {{ client.clients_id.name_abbrevation }}
-                </span>
-              </v-col>
-            </v-row>
-          </div>
-        </div>
-        <!-- CLIENTS -->
       </v-container>
+
+      <!-- CLIENTS -->
+      <TypesClients v-if="service.clients.length > 0" :clients="service.clients" ></TypesClients>
+      <!-- CLIENTS -->
+      
     </div>
   </div>
 </template>
@@ -57,7 +25,6 @@
 <script>
 export default {
   async asyncData({ $axios, $config, route }) {
-
     const { data } = await $axios
       .get(`${$config.apiUrlV2}/items/services`, {
         params: {
@@ -136,5 +103,5 @@ export default {
 };
 </script>
 
-<style>
+<style lang="postcss">
 </style>
