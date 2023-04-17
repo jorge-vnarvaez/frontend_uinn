@@ -1,5 +1,14 @@
 <template>
   <v-app>
+    <!-- Start of HubSpot Embed Code -->
+    <script
+      type="text/javascript"
+      id="hs-script-loader"
+      async
+      defer
+      src="//js.hs-scripts.com/39490607.js"
+    ></script>
+    <!-- End of HubSpot Embed Code -->
     <script
       charset="utf-8"
       type="text/javascript"
@@ -34,22 +43,20 @@ export default {
       this.$store.dispatch("ui/loadUiSettings"),
       this.$store.dispatch("services/loadServices"),
       this.$store.dispatch("social_media/loadSocialMediaObject"),
-      ]).then(
-      (res) => {
-        this.uiSettingsLoaded = true;
-        let interval = setInterval(() => {
-          let currentTime = new Date().getTime();
-          let timeElapsed = currentTime - this.startTime;
+    ]).then((res) => {
+      this.uiSettingsLoaded = true;
+      let interval = setInterval(() => {
+        let currentTime = new Date().getTime();
+        let timeElapsed = currentTime - this.startTime;
 
-          this.progress = Math.round((timeElapsed / this.totalTime) * 100);
-          if (this.progress >= 100) {
-            this.progress = 100;
-            clearInterval(interval);
-            this.contentWasRendered = true;
-          }
-        }, 100);
-      }
-    );
+        this.progress = Math.round((timeElapsed / this.totalTime) * 100);
+        if (this.progress >= 100) {
+          this.progress = 100;
+          clearInterval(interval);
+          this.contentWasRendered = true;
+        }
+      }, 100);
+    });
   },
   computed: {
     ui_settings() {
