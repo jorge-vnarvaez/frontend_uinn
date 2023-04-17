@@ -12,9 +12,9 @@
               <div class="py-8 px-10 ">
                   <v-img :src="$config.apiUrlV2 + '/assets/' + service.illustration" width="112" height="78" contain></v-img>
 
-                  <span class="block my-4 w-40 font-bold font-gotham">{{ service.title }}</span>
+                  <span class="block my-4 w-40 uppercase font-bold font-gotham">{{ service.title }}</span>
 
-                  <span v-html="service.description" class="block w-8/12 h-[124px] text-slate-800"></span>
+                  <span v-html="service.description" class="block w-full lg:w-8/12 h-[124px] text-slate-800"></span>
               </div>
 
               <v-divider class="mt-8 bg-slate-100"></v-divider>
