@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-black py-8">
-    <v-container>
+  <footer class="bg-black py-8" :style="ui_settings">
+    <v-container class="px-0">
       <div class="max-w-screen-xl mx-auto">
         <div class="grid grid-cols-12 gap-y-12 lg:gap-y-0">
           <div class="flex flex-col text-white col-span-12 lg:col-span-4">
@@ -20,7 +20,7 @@
             <!-- SOCIAL MEDIA -->
             <div class="mt-4 flex space-x-6">
               <!-- LINKEDIN -->
-              <a href="https://www.linkedin.com/company/uinn/" target="_blank">
+              <a :href="linkedin" target="_blank">
                 <font-awesome-icon
                   icon="fa-brands fa-linkedin-in"
                   class="w-8 h-8 text-white"
@@ -33,7 +33,7 @@
               <!-- TWITTER -->
 
               <!-- INSTAGRAM -->
-              <a href="https://www.instagram.com/uinnudec/" target="_blank">
+              <a :href="instagram" target="_blank">
                 <font-awesome-icon
                   icon="fa-brands fa-instagram"
                   class="w-8 h-8 text-white"
@@ -60,9 +60,15 @@
             <div class="flex flex-col cursor-pointer col-span-6 lg:col-span-4">
               <span class="block mb-2 font-bold text-lg">Nosotros</span>
               <div class="flex flex-col text-sm space-y-2">
-              <nuxt-link :to="{ path: '/acerca_nuestro' }"><span class="text-white">Acerca nuestro</span></nuxt-link>
-                <nuxt-link to="actividades"><span class="text-white">Noticias</span></nuxt-link>
-                <nuxt-link to="actividades"><span class="text-white">Eventos</span></nuxt-link>
+                <nuxt-link :to="{ path: '/acerca_nuestro' }"
+                  ><span class="text-white">Acerca nuestro</span></nuxt-link
+                >
+                <nuxt-link to="actividades"
+                  ><span class="text-white">Noticias</span></nuxt-link
+                >
+                <nuxt-link to="actividades"
+                  ><span class="text-white">Eventos</span></nuxt-link
+                >
               </div>
             </div>
             <!-- NOSOTROS -->
@@ -71,8 +77,13 @@
             <div class="flex flex-col col-span-6 lg:col-span-4">
               <span class="block mb-2 font-bold text-lg">Servicios</span>
               <div class="flex flex-col text-sm space-y-2">
-                <nuxt-link :to="{ path: '/servicios/innovacion-empresarial' }"><span class="text-white">Innovación Empresarial</span></nuxt-link>
-
+                <div v-for="service in services" :key="service.id">
+                  <nuxt-link :to="{ path: '/servicios/' + service.href }"
+                    ><span class="text-white normal-case">{{
+                      service.title
+                    }}</span></nuxt-link
+                  >
+                </div>
               </div>
             </div>
             <!-- SERVICIOS -->
@@ -97,7 +108,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    services() {
+      return this.$store.getters["services/getServices"];
+    },
+    ui_settings() {
+      return this.$store.getters["ui/getUiSettings"];
+    },
+    social_media() {
+      return this.$store.getters["social_media/getSocialMedia"];
+    },
+    instagram() {
+      return this.$store.getters["social_media/getInstagram"];
+    },
+    linkedin() {
+      return this.$store.getters["social_media/getLinkedin"];
+    },
+  },
+};
 </script>
 
 <style></style>
