@@ -1,6 +1,9 @@
 <template>
   <div>
-    <nav class="shadow-lg fixed top-0 z-50 bg-white w-full" :style="ui_settings">
+    <nav
+      class="shadow-lg fixed top-0 z-50 bg-white w-full"
+      :style="ui_settings"
+    >
       <v-container class="px-0">
         <div class="max-w-screen-xl mx-auto">
           <div class="flex align-center justify-between">
@@ -30,7 +33,11 @@
             <!-- SEARCH -->
 
             <!-- OPEN MENU -->
-            <div class="cursor-pointer" v-if="$vuetify.breakpoint.mobile && !navigationDrawerState" @click="$store.commit('ui/setNavigationDrawerState', true)">
+            <div
+              class="cursor-pointer"
+              v-if="$vuetify.breakpoint.mobile && !navigationDrawerState"
+              @click="$store.commit('ui/setNavigationDrawerState', true)"
+            >
               <v-icon class="text-slate-900">mdi-menu</v-icon>
             </div>
             <!-- OPEN MENU -->
@@ -47,25 +54,30 @@
 
     <!-- HEADER HERO -->
     <div v-if="is_page">
-        <div v-if="page.header" :style="page.header.hero_image == null ? { height: '100vh' } : bg">
-          <div
-            class="max-w-screen-xl mx-auto"
-            v-if="is_page && !blank_page"
-            :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
-          >
-            <div class="text-white h-screen flex align-center" v-if="page.header">
-              <v-container class="px-6">
-                <v-row>
-                  <BlockComponent
-                    v-for="block in page.header.blocks"
-                    :key="block.id"
-                    :block="block"
-                  ></BlockComponent>
-                </v-row>
-              </v-container>
-            </div>
+      <div
+        v-if="page.header"
+        :style="page.header.hero_image == null ? { height: '100vh' } : bg"
+      >
+        <div
+          class="max-w-screen-xl mx-auto"
+          v-if="is_page && !blank_page"
+          :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
+        >
+          <div class="text-white h-screen flex align-center" v-if="page.header">
+            <v-container class="px-6">
+              <v-row>
+                <BlockComponent
+                  v-for="block in page.header.blocks"
+                  :key="block.id"
+                  :block="block"
+                ></BlockComponent>
+              </v-row>
+
+              <NavSocialMediaContainer v-if="!$vuetify.breakpoint.mobile" parent_type="page" :icon_color_mode="page.header.icon_color_mode" />
+            </v-container>
           </div>
         </div>
+      </div>
     </div>
     <!-- HEADER HERO -->
 
@@ -77,7 +89,15 @@
 
     <!-- HERO IMAGE -->
     <div v-if="is_page">
-      <div v-if="page.hero != null" :style="{ backgroundColor: page.hero.bg_color, height: 'auto', display: 'flex', flexDirection: 'column'}">
+      <div
+        v-if="page.hero != null"
+        :style="{
+          backgroundColor: page.hero.bg_color,
+          height: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+        }"
+      >
         <div
           class="max-w-screen-xl mx-auto"
           :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
@@ -123,30 +143,30 @@ export default {
           hoverable: true,
           childrens: [
             {
-              slug: 'estrategia-organizacional',
-              title: 'Estrategia organizacional',
-              href: '/servicios/estrategia-organizacional',
+              slug: "estrategia-organizacional",
+              title: "Estrategia organizacional",
+              href: "/servicios/estrategia-organizacional",
             },
             {
-              slug: 'seguimiento-estrategico',
-              title: 'Seguimiento estratégico',
-              href: '/servicios/estrategia-organizacional',
+              slug: "seguimiento-estrategico",
+              title: "Seguimiento estratégico",
+              href: "/servicios/estrategia-organizacional",
             },
             {
-              slug: 'formacion-ejecutiva',
-              title: 'Formación ejecutiva',
-              href: '/servicios/formacion-ejecutiva',
+              slug: "formacion-ejecutiva",
+              title: "Formación ejecutiva",
+              href: "/servicios/formacion-ejecutiva",
             },
             {
-              slug: 'gestion-de-la-innovacion',
-              title: 'Gestión de la innovación',
-              href: '/servicios/gestion-de-la-innovacion',
+              slug: "gestion-de-la-innovacion",
+              title: "Gestión de la innovación",
+              href: "/servicios/gestion-de-la-innovacion",
             },
             {
-              slug: 'desarrollo-de-ecosistemas',
-              title: 'Desarrollo de ecosistemas',
-              href: '/servicios/desarrollo-de-ecosistemas',
-            }
+              slug: "desarrollo-de-ecosistemas",
+              title: "Desarrollo de ecosistemas",
+              href: "/servicios/desarrollo-de-ecosistemas",
+            },
           ],
         },
         {
@@ -158,7 +178,7 @@ export default {
           id: 6,
           title: "Contacto",
           href: "/contacto",
-        }
+        },
       ],
     };
   },
@@ -208,6 +228,7 @@ export default {
     navigationDrawerState() {
       return this.$store.getters["ui/getNavigationDrawerState"];
     },
+
   },
 };
 </script>

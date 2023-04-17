@@ -29,6 +29,7 @@ export default {
       .get(`${$config.apiUrlV2}/items/services`, {
         params: {
           fields: [
+            "header.icon_color_mode",
             "header.hero_image",
             "header.blocks.*.*.*",
             "title",

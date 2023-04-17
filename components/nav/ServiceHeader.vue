@@ -15,6 +15,8 @@
                   :block="block"
                 ></BlockComponent>
             </v-row>
+
+            <NavSocialMediaContainer v-if="!$vuetify.breakpoint.mobile" parent_type="service" :icon_color_mode="service.header.icon_color_mode" />
         </div>
       </v-container>
     </div>
