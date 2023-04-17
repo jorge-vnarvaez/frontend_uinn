@@ -5,6 +5,7 @@
         :offset="block_align"
         :align="$vuetify.breakpoint.mobile ? block.mobile_align : block.align"
         :class="[
+          'px-0',
           block.mobile_y_axis_padding, 
           block.y_axis_padding,
           block.mobile_y_axis_margin,
