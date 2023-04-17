@@ -1,6 +1,6 @@
 <template>
   <div v-if="page && page.hero">
-    <v-container class="max-w-screen-xl mx-auto" v-if="page.blocks">
+    <v-container class="max-w-screen-xl mx-auto px-0" v-if="page.blocks">
       <v-row>
         <BlockComponent
           v-for="block in page.blocks"
@@ -11,7 +11,13 @@
       </v-row>
     </v-container>
     
-    <TypesServices :services="page.services" id="servicios" />
+    <TypesServices v-if="page.services.length > 0" :services="page.services" />
+
+    <v-container class="max-w-screen-xl mx-auto px-0">
+      <v-divider class="my-16"></v-divider>
+    </v-container>
+
+    <TypesClients v-if="page.clients.length > 0" :clients="page.clients" parent_type="page" />
   </div>
 </template>
 
