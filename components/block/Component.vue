@@ -68,6 +68,13 @@
         </div>
         <!-- IMAGE -->
 
+        <!-- ICON -->
+        <div v-if="['Icon'].includes(block.format)">
+            <BlockIcon :block="block"></BlockIcon>
+        </div>
+        <!-- ICON -->
+
+
         <!-- FEATURE LIST -->
         <div v-if="['Features List'].includes(block.format)" class="grid grid-cols-12 lg:gap-x-20">
             <BlockFeatureList :block="block"></BlockFeatureList>
