@@ -1,7 +1,7 @@
 <template>
-  <div v-if="page.header">
-    <nav class="shadow-2xl" :style="$vuetify.breakpoint.mobile ? ui_settings : {}">
-      <v-container>
+  <div>
+    <nav class="shadow-lg fixed top-0 z-50 bg-white w-full" :style="ui_settings">
+      <v-container class="px-0">
         <div class="max-w-screen-xl mx-auto">
           <div class="flex align-center justify-between">
             <!-- LOGO -->
@@ -40,30 +40,32 @@
     </nav>
 
     <!-- LIVE EVENT -->
-    <!-- <div>
-      <InfoEventosLive />
-    </div> -->
+    <div>
+      <InfoActivitiesLive />
+    </div>
     <!-- LIVE EVENT -->
 
     <!-- HEADER HERO -->
-    <div :style="page.header.hero_image == null ? { height: '100vh' } : bg">
-      <div
-        class="max-w-screen-xl mx-auto"
-        v-if="is_page && !blank_page"
-        :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
-      >
-        <div class="text-white h-screen flex align-center" v-if="page.header">
-          <v-container class="px-6">
-            <v-row>
-              <BlockComponent
-                v-for="block in page.header.blocks"
-                :key="block.id"
-                :block="block"
-              ></BlockComponent>
-            </v-row>
-          </v-container>
+    <div v-if="is_page">
+        <div v-if="page.header" :style="page.header.hero_image == null ? { height: '100vh' } : bg">
+          <div
+            class="max-w-screen-xl mx-auto"
+            v-if="is_page && !blank_page"
+            :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
+          >
+            <div class="text-white h-screen flex align-center" v-if="page.header">
+              <v-container class="px-6">
+                <v-row>
+                  <BlockComponent
+                    v-for="block in page.header.blocks"
+                    :key="block.id"
+                    :block="block"
+                  ></BlockComponent>
+                </v-row>
+              </v-container>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
     <!-- HEADER HERO -->
 
@@ -74,11 +76,10 @@
     <!-- HEADER SERVICE -->
 
     <!-- HERO IMAGE -->
-    <div v-if="is_page && page.hero">
-      <div :style="{ backgroundColor: page.hero.bg_color, height: '100vh'}">
+    <div v-if="is_page">
+      <div v-if="page.hero != null" :style="{ backgroundColor: page.hero.bg_color, height: 'auto', display: 'flex', flexDirection: 'column'}">
         <div
           class="max-w-screen-xl mx-auto"
-          v-if="is_page && !blank_page"
           :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
         >
           <div class="text-white h-screen flex align-center" v-if="page.hero">
@@ -119,6 +120,34 @@ export default {
           id: 4,
           title: "Productos y servicios",
           href: "/#servicios",
+          hoverable: true,
+          childrens: [
+            {
+              slug: 'estrategia-organizacional',
+              title: 'Estrategia organizacional',
+              href: '/servicios/estrategia-organizacional',
+            },
+            {
+              slug: 'seguimiento-estrategico',
+              title: 'Seguimiento estratégico',
+              href: '/servicios/estrategia-organizacional',
+            },
+            {
+              slug: 'formacion-ejecutiva',
+              title: 'Formación ejecutiva',
+              href: '/servicios/formacion-ejecutiva',
+            },
+            {
+              slug: 'gestion-de-la-innovacion',
+              title: 'Gestión de la innovación',
+              href: '/servicios/gestion-de-la-innovacion',
+            },
+            {
+              slug: 'desarrollo-de-ecosistemas',
+              title: 'Desarrollo de ecosistemas',
+              href: '/servicios/desarrollo-de-ecosistemas',
+            }
+          ],
         },
         {
           id: 5,

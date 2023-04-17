@@ -33,8 +33,6 @@ export default {
             return today >= dateStart && today <= dateEnd
         })
 
-        console.log(liveActivity)
-
         commit('updateLiveActivity', { data: liveActivity })
     }
 }
