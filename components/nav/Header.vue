@@ -47,8 +47,8 @@
     </nav>
 
     <!-- LIVE EVENT -->
-    <div>
-      <InfoActivitiesLive />
+    <div v-if="liveActivity">
+      <InfoActivitiesLive :liveActivity="liveActivity" />
     </div>
     <!-- LIVE EVENT -->
 
@@ -228,7 +228,9 @@ export default {
     navigationDrawerState() {
       return this.$store.getters["ui/getNavigationDrawerState"];
     },
-
+    liveActivity() {
+      return this.$store.getters["activities/getLiveActivity"];
+    },
   },
 };
 </script>

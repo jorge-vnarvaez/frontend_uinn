@@ -42,6 +42,7 @@ export default {
     await Promise.all([
       this.$store.dispatch("ui/loadUiSettings"),
       this.$store.dispatch("services/loadServices"),
+      this.$store.dispatch("activities/liveActivity"),
       this.$store.dispatch("social_media/loadSocialMediaObject"),
     ]).then((res) => {
       this.uiSettingsLoaded = true;

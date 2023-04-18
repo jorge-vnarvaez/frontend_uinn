@@ -33,13 +33,13 @@
 
 <script>
 export default {
-  async fetch() {
-    await this.$store.dispatch("activities/liveActivity");
+  props: {
+    liveActivity: {
+      type: Object,
+      default: null
+    }
   },
   computed: {
-    liveActivity() {
-      return this.$store.getters["activities/getLiveActivity"];
-    },
     is_index() {
       return this.$route.path === "/";
     }
