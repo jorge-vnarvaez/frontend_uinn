@@ -15,6 +15,7 @@ export default {
                 "blocks.childs.*.*",
                 'blocks.team_members.name',
                 'blocks.team_members.position',
+                'blocks.team_members.email',
                 'blocks.team_members.photo',
                 'blocks.team_members.tags.labels_id.id',
                 'blocks.team_members.tags.labels_id.title',

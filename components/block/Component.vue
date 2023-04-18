@@ -226,6 +226,7 @@
                         <div>
                           <span class="block mt-2 text-center font-gotham font-bold text-lg lg:text-xl">{{ team_member.name }}</span>
                           <span class="block mt-2 text-center font-inter text-[18px]">{{ team_member.position }}</span>
+                          <span class="block mt-2 text-center text-slate-700 font-inter text-[14px]">{{ team_member.email }}</span>
                         </div>
                       </div>
 
