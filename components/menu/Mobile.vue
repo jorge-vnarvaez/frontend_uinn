@@ -15,7 +15,11 @@
               @click="$store.commit('ui/setNavigationDrawerState', false)"
             ></v-img>
           </nuxt-link>
-          <v-icon @click="$store.commit('ui/setNavigationDrawerState', false); parentActive = null"
+          <v-icon
+            @click="
+              $store.commit('ui/setNavigationDrawerState', false);
+              parentActive = null;
+            "
             >mdi-close</v-icon
           >
         </div>
@@ -33,32 +37,55 @@
           <v-divider></v-divider>
 
           <div class="pt-4" v-if="parent.childrens.length > 0">
-            <div v-for="children in parent.childrens" :key="children.slug" class="py-2">
-              <nuxt-link :to="children.href">
-                <span class="block text-sm text-slate-500">{{ children.title }}</span>
+            <div
+              v-for="children in parent.childrens"
+              :key="children.slug"
+              class="py-2"
+            >
+              <nuxt-link
+                :to="children.href"
+                @click="
+                  parentActive = null;
+                  $store.commit('ui/setNavigationDrawerState', false);
+                "
+              >
+                <span class="block text-sm text-slate-500">{{
+                  children.title
+                }}</span>
               </nuxt-link>
             </div>
           </div>
         </div>
 
         <div v-if="!parentActive" class="flex flex-col">
-          <nuxt-link
-            v-for="item in list"
-            :key="item.id"
-            :to="{ path: item.href }"
-            class="pb-2"
-          >
-            <div class="flex justify-between">
+          <div v-for="item in list" :key="item.id" class="py-2">
+            <nuxt-link v-if="!item.hoverable" :to="item.href">
               <span
                 class="text-slate-900"
                 @click="$store.commit('ui/setNavigationDrawerState', false)"
-                >{{ item.title }}</span
+                >{{ item.title }}</span 
               >
+            </nuxt-link>
 
-              <v-icon v-if="item.hoverable" @click="parentActive = item.id">mdi-chevron-down</v-icon>
-              <v-icon v-if="item.hoverable && parentActive != null" @click="parentActive = null">mdi-chevron-up</v-icon>
+            <div v-if="item.hoverable">
+              <div class="flex justify-between">
+                <span
+                  class="text-slate-900"
+                  @click="$store.commit('ui/setNavigationDrawerState', false)"
+                  >{{ item.title }}</span
+                >
+
+                <v-icon v-if="item.hoverable" @click="parentActive = item.id"
+                  >mdi-chevron-down</v-icon
+                >
+                <v-icon
+                  v-if="item.hoverable && parentActive != null"
+                  @click="parentActive = null"
+                  >mdi-chevron-up</v-icon
+                >
+              </div>
             </div>
-          </nuxt-link>
+          </div>
         </div>
       </v-container>
     </div>
@@ -77,7 +104,7 @@ export default {
   data() {
     return {
       parentActive: null,
-    }
+    };
   },
   computed: {
     parent() {
