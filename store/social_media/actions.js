@@ -6,8 +6,6 @@ export default {
 
         const { data } = await fetch(fetchString).then(res => res.json())
 
-        console.log(data)
-
         commit('setSocialMediaObject', { data: data })
     }
 }
