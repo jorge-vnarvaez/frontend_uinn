@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
     @font-face {
         font-family: 'Gotham';
         font-style: normal;
         font-weight: 700;
-        src: url('../fonts/gothambold-webfont.woff') format('woff'), url('../fonts/gothambold-webfont.woff2') format('woff2'),
+        src: url('../fonts/gothambold-webfont.woff2') format('woff2'), url('../fonts/gothambold-webfont.woff') format('woff')
     }
     
     @font-face {
