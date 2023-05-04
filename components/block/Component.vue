@@ -35,6 +35,9 @@
               $data._7_extra_large_font_size,
               $data._8_extra_large_font_size,
               $data._9_extra_large_font_size,
+              'font-gotham',
+              'font-medium',
+              'font-inter'
             ]"></span> 
             <!-- DON'T REMOVE, THIS SPAN IS USED TO PRELOAD ALL FONT SIZES FROM TAILWIND CSS IN JIT MODE -->
 
