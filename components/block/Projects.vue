@@ -1,7 +1,7 @@
 <template>
   <div id="projects-wrapper">
     <v-card
-      width="650"
+      width="350"
       min-width="450"
       elevation="0"
       v-for="project in block.projects"
@@ -13,17 +13,31 @@
         :src="$config.apiUrlV2 + '/assets/' + project.featured_image.id"
       ></v-img>
 
-      <v-card-title class="px-8 pt-6 w-10/12 h-20">
-        <span class="block text-xl font-medium text-slate-700 mb-4">{{
+      <v-card-title class="px-8 pt-6 h-20">
+        <span class="block text-xl font-medium text-slate-700 mb-4 whitespace-normal break-normal">{{
           project.title
         }}</span>
       </v-card-title>
 
-      <v-card-subtitle class="px-8 py-6">
+      <v-card-subtitle class="px-8 py-6 h-64">
         <span class="block mb-12 text-slate-600">{{
           project.description
         }}</span>
       </v-card-subtitle>
+
+      <div class="px-8">
+        <v-divider></v-divider>
+      </div>
+
+      <v-card-actions class="px-8 py-6">
+        <v-btn
+          :href="project.url"
+          target="_blank"
+          class="text-cyan-500 hover:text-slate-800"
+          text
+          >Ver más</v-btn
+        >
+      </v-card-actions>
     </v-card>
   </div>
 </template>
