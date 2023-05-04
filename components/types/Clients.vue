@@ -7,8 +7,7 @@
       >
 
       <span class="text-lg text-center"
-        >Esto lo logramos mediante la integración de estrategia, diseño y
-        gestión tecnológica.</span
+        >Organizaciones que han trabajado con nosotros en su desarrollo.</span
       >
 
       <v-container class="max-w-screen-xl mx-auto">

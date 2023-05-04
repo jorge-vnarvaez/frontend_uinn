@@ -12,11 +12,11 @@
             ></v-img>
           </div>
 
-          <v-card-title class="text-lg w-11/12 h-20">
+          <v-card-title class="text-lg whitespace-normal break-normal h-20">
             {{ activity.title }}
           </v-card-title>
 
-          <v-card-text>
+          <v-card-text class="whitespace-normal break-normal h-48">
             {{ activity.excerpt }}
           </v-card-text>
         </v-card>

@@ -3,7 +3,7 @@
   <div class="flex space-x-20 justify-center align-center">
     <div v-for="item in list" :key="item.id">
       <nuxt-link v-if="!item.hoverable" :to="item.href" class="text-slate-900">
-          <span>{{ item.title }}</span>
+          <span @mouseover="servicesCard = false">{{ item.title }}</span>
       </nuxt-link>
 
       <div v-if="item.hoverable">

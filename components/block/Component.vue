@@ -281,6 +281,13 @@ export default {
       default: "default",
     },
   },
+  mounted() {
+    if(this.block) {
+      if(this.block.format == 'Tab') {
+        this.setActiveTab(this.block.id)
+      }
+    }
+  },
   methods: {
     setActiveTab(block_id) {
       this.$store.commit('tabs/setActiveInnerTab', null)
