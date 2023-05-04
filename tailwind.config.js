@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        gotham: ['Gotham', 'sans-serif'],
+        gotham: ['Gotham', 'Montserrat', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
         scpro: ['SourceCodePro-Regular', 'sans-serif'],
       }
