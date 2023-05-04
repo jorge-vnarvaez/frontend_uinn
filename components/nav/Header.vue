@@ -133,7 +133,7 @@ export default {
         },
         {
           id: 3,
-          title: "Acerca nuestro",
+          title: "Nosotros",
           href: "/acerca_nuestro",
         },
         {
