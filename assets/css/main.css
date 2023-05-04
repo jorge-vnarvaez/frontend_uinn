@@ -1,14 +1,17 @@
 @tailwind base;
 @tailwind components;
-
-@font-face {
-    font-family: 'Gotham-Bold';
-    src: local('Gotham-Bold'), url('../fonts/Gotham-Bold.ttf') format('ttf');
-}
-
-@font-face {
-    font-family: 'SourceCodePro-Regular';
-    src: local('SourceCodePro-Regular'), url('../fonts/SourceCodePro-Regular.ttf') format('ttf');
-}
-
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Gotham-Bold';
+        font-style: normal;
+        font-weight: 700;
+        src: url('../fonts/Gotham-Bold.ttf') format('ttf');
+    }
+    
+    @font-face {
+        font-family: 'SourceCodePro-Regular';
+        src: url('../fonts/SourceCodePro-Regular.ttf') format('ttf');
+    }
+}
