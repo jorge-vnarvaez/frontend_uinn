@@ -1,25 +1,43 @@
 <template>
-    <v-btn 
-        :color="block.bg_color"  
-        :to="{ path: block.link_to }" 
-        :outlined="block.outlined"
-        class="rounded-lg w-full capitalize pa-0"
-    >
-        <span :style="{ 'color': block.text_color}">{{ block.title }}</span>
-    </v-btn>
+  <div>
+    <div v-if="['Rounded Icon'].includes(block.button_type)">Rounded Icon</div>
+
+    <div v-if="['Rounded Icon Text Outer'].includes(block.button_type)">
+      <v-btn icon rounded outlined x-large retain-focus-on-click>
+        <v-icon small>{{ block.icon }}</v-icon>
+      </v-btn>
+      <v-btn text retain-focus-on-click>
+        {{ block.text }}
+      </v-btn>
+    </div>
+
+
+    <div v-if="['Rounded Outlined Text'].includes(block.button_type)">
+        <v-btn  rounded outlined small>
+            Noticias
+        </v-btn>
+    </div>
+
+    <div v-if="['Outlined Icon + Text'].includes(block.button_type)">
+          <v-btn outlined plain>
+                <v-icon>mdi-plus</v-icon>
+                <v-divider vertical class="text-slate-800"></v-divider>
+                <span class="px-4">Info aquí</span>
+          </v-btn>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
-        block: {
-            type: Object,
-            required: true,
-        },
-    }
-}
+  props: {
+    block: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

@@ -4,22 +4,14 @@
         :lg="block.size"
         :offset="block_align"
         :align="$vuetify.breakpoint.mobile ? block.mobile_align : block.align"
-        :class="[
-          'px-0',
-          block.mobile_y_axis_padding, 
-          block.y_axis_padding,
-          block.mobile_y_axis_margin,
-          block.y_axis_margin,
-          block.padding ? block.right_padding : 'pa-0',
-        ]"
+        :class="['px-0']"
         :style="{ 
-          'margin-top':$vuetify.breakpoint.mobile ? $getMarginValue(block.mobile_margin_top) : $getMarginValue(block.margin_top),
-          'margin-right': $vuetify.breakpoint.mobile ? $getMarginValue(block.mobile_margin_right) : $getMarginValue(block.margin_right),
-          'margin-bottom':$vuetify.breakpoint.mobile ? $getMarginValue(block.mobile_margin_bottom) : $getMarginValue(block.margin_bottom) 
+          'padding-top': $vuetify.breakpoint.mobile ? $getPaddingValue(block.mobile_padding_top) : $getPaddingValue(block.padding_top),
+          'margin-top': $getMarginValue(block.margin_top),
         }"
       >
         <!-- TITLE AND TEXT -->
-        <div v-if="['Title + Text'].includes(block.format)">
+        <div v-if="['Text'].includes(block.format)">
             <!-- DON'T REMOVE, THIS SPAN IS USED TO PRELOAD ALL FONT SIZES FROM TAILWIND CSS IN JIT MODE -->
             <span :class="[
               $data._xs_font_size,
@@ -45,6 +37,12 @@
         </div>
         <!-- TITLE AND TEXT -->
 
+        <!-- LONG TEXT -->
+        <div v-if="['Long Text'].includes(block.format)">
+          <BlockLongText :block="block"></BlockLongText>
+        </div>
+        <!-- LONG TEXT -->
+
         <!-- DIVIDER -->
         <div v-if="['Divider'].includes(block.format)">
             <BlockDivider :block="block"></BlockDivider>
@@ -66,7 +64,7 @@
         <!-- LABELS LIST -->
 
         <!-- IMAGE -->
-        <div v-if="['Big Image'].includes(block.format)">
+        <div v-if="['Image'].includes(block.format)">
             <BlockImage :block="block"></BlockImage>
         </div>
         <!-- IMAGE -->
@@ -154,7 +152,7 @@
 
           <!-- GROUP -->
           <div v-if="['Group'].includes(block.format)">
-            <div v-if="!block.visibility">
+            <div>
                 <v-container class="max-w-screen-xl mx-auto">
                     <v-row>
                       <BlockComponent  
@@ -212,12 +210,12 @@
           <div v-if="['Team Members'].includes(block.format)">
               <v-row>
                 <v-col v-for="team_member in block.team_members" :key="team_member.id" cols="12" lg="4">
-                  <v-card class="border-2 bg-slate-50 border-slate-200" height="600" rounded="xl" outlined>
+                  <div>
                       <div class="pa-6">
                         <div class="w-full">
                           <v-img
                           class="mb-6" 
-                          :src="$config.apiUrlV2 + '/assets/' + team_member.photo"
+                          :src="$config.apiUrlV2 + '/assets/' + team_member.photo.id"
                           width="208"
                           height="208"
                           max-width="100%"
@@ -228,12 +226,12 @@
 
                         <div>
                           <span class="block mt-2 text-center font-gotham font-bold text-lg lg:text-xl">{{ team_member.name }}</span>
-                          <span class="block mt-2 text-center font-inter text-[18px]">{{ team_member.position }}</span>
+                          <span class="block mt-2 text-center font-inter font-light text-[18px]">{{ team_member.position }}</span>
                           <span class="block mt-2 text-center text-slate-700 font-inter text-[14px]">{{ team_member.email }}</span>
                         </div>
                       </div>
 
-                      <v-divider class="my-4"></v-divider>
+                      
 
                       <div class="pa-6">
                         <div class="flex flex-wrap">
@@ -248,11 +246,24 @@
                           </div>
                         </div>
                       </div>
-                  </v-card>
+                  </div>
                 </v-col>
               </v-row>  
           </div>
-        <!-- TEAM MEMBERS -->
+          <!-- TEAM MEMBERS -->
+
+          <!-- CLIENTS -->
+          <div v-if="['Clients'].includes(block.format)">
+            <v-row v-if="block.clients.length > 0">
+              <v-col v-for="client in block.clients" :key="client.id" cols="6" lg="3" justify="center" align="center">
+                <v-img v-if="client.logo" :src="$config.apiUrlV2 + '/assets/' + client.logo.id" width="65%" height="65%" contain></v-img>
+                <span class="block text-lg font-bold text-center">
+                  {{ client.name }}
+                </span>
+              </v-col>
+            </v-row>
+          </div>
+          <!-- CLIENTS -->
   </v-col>
 </template>
 

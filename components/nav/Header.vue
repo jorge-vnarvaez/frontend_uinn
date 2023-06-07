@@ -2,10 +2,11 @@
   <div>
     <nav
       class="shadow-lg fixed top-0 z-50 bg-white w-full"
-      :style="ui_settings"
     >
       <v-container class="px-0">
-        <div class="max-w-screen-xl mx-auto">
+        <div class="max-w-screen-xl mx-auto" :style="{
+          padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
+        }">
           <div class="flex align-center justify-between">
             <!-- LOGO -->
             <div @click="home" class="cursor-pointer z-30">
@@ -47,13 +48,13 @@
     </nav>
 
     <!-- LIVE EVENT -->
-    <div v-if="liveActivity">
+    <!-- <div v-if="liveActivity">
       <InfoActivitiesLive :liveActivity="liveActivity" />
-    </div>
+    </div> -->
     <!-- LIVE EVENT -->
 
     <!-- HEADER HERO -->
-    <div v-if="is_page">
+    <!-- <div v-if="is_page">
       <div
         v-if="page.header"
         :style="page.header.hero_image == null ? { height: '100vh' } : bg"
@@ -78,17 +79,17 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- HEADER HERO -->
 
     <!-- HEADER SERVICE -->
-    <div v-if="!is_page && !blank_page">
+    <!-- <div v-if="!is_page && !blank_page">
       <NavServiceHeader />
-    </div>
+    </div> -->
     <!-- HEADER SERVICE -->
 
     <!-- HERO IMAGE -->
-    <div v-if="is_page">
+    <!-- <div v-if="is_page">
       <div
         v-if="page.hero != null"
         :style="{
@@ -115,7 +116,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- HERO IMAGE -->
   </div>
 </template>
@@ -143,30 +144,30 @@ export default {
           hoverable: true,
           childrens: [
             {
-              slug: "estrategia-organizacional",
-              title: "Estrategia organizacional",
-              href: "/servicios/estrategia-organizacional",
+              slug: "estrategia-transformacional",
+              title: "Estrategia transformacional",
+              href: "/servicios/estrategia-transformacional",
             },
-            {
-              slug: "seguimiento-estrategico",
-              title: "Seguimiento estratégico",
-              href: "/servicios/estrategia-organizacional",
-            },
-            {
-              slug: "formacion-ejecutiva",
-              title: "Formación ejecutiva",
-              href: "/servicios/formacion-ejecutiva",
-            },
+            // {
+            //   slug: "seguimiento-estrategico",
+            //   title: "Seguimiento estratégico",
+            //   href: "/servicios/estrategia-organizacional",
+            // },
+            // {
+            //   slug: "formacion-ejecutiva",
+            //   title: "Formación ejecutiva",
+            //   href: "/servicios/formacion-ejecutiva",
+            // },
             {
               slug: "gestion-de-la-innovacion",
               title: "Gestión de la innovación",
               href: "/servicios/gestion-de-la-innovacion",
             },
-            {
-              slug: "desarrollo-de-ecosistemas",
-              title: "Desarrollo de ecosistemas",
-              href: "/servicios/desarrollo-de-ecosistemas",
-            },
+            // {
+            //   slug: "desarrollo-de-ecosistemas",
+            //   title: "Desarrollo de ecosistemas",
+            //   href: "/servicios/desarrollo-de-ecosistemas",
+            // },
           ],
         },
         {
@@ -184,32 +185,12 @@ export default {
   },
   methods: {
     async home() {
-      this.$store.commit(
-        "ui/setActiveHeroImage",
-        this.$store.getters["ui/getIndexHeroImage"]
-      );
-
       await this.$store.dispatch("pages/loadPage", "inicio");
 
       this.$router.push("/");
     },
   },
   computed: {
-    bg() {
-      const image_config = {
-        "background-image": `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(${this.$store.getters["ui/getActiveHeroImage"]})`,
-        "background-size": "cover",
-        "background-position": "center",
-        "background-repeat": "no-repeat",
-        height: "100vh",
-      };
-
-      const color_config = {
-        "background-color": this.$store.getters["ui/getActiveColor"],
-      };
-
-      return this.is_page ? image_config : color_config;
-    },
     page() {
       return this.$store.getters["pages/activePage"];
     },
@@ -219,17 +200,14 @@ export default {
     blank_page() {
       return this.$store.getters["ui/getActiveParentType"] == null;
     },
-    services() {
-      return this.$store.getters["services/getServices"];
-    },
-    ui_settings() {
-      return this.$store.getters["ui/getUiSettings"];
-    },
+    // services() {
+    //   return this.$store.getters["services/getServices"];
+    // },
+    // ui_settings() {
+    //   return this.$store.getters["ui/getUiSettings"];
+    // },
     navigationDrawerState() {
       return this.$store.getters["ui/getNavigationDrawerState"];
-    },
-    liveActivity() {
-      return this.$store.getters["activities/getLiveActivity"];
     },
   },
 };

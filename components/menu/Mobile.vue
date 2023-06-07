@@ -2,7 +2,9 @@
   <div v-if="drawer" class="fixed top-0 left-0 w-full h-full z-50">
     <div
       class="bg-white w-full max-w-screen-xl mx-auto rounded-b-lg shadow-lg z-50"
-      :style="ui_settings"
+      :style="{
+          padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
+      }"
     >
       <v-container class="px-0">
         <div class="flex justify-between align-center">
@@ -25,12 +27,11 @@
         </div>
 
         <div class="py-4">
-          <v-divider></v-divider>
         </div>
 
         <div v-if="parentActive">
           <div class="flex pb-4">
-            <v-icon @click="parentActive = null">mdi-chevron-left</v-icon>
+            <!-- <v-icon @click="parentActive = null">mdi-chevron-left</v-icon> -->
             <span class="block font-bold">{{ parent.title }}</span>
           </div>
 

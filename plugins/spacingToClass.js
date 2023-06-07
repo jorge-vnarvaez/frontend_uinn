@@ -3,4 +3,8 @@ export default ({ app, $vuetify }, inject) => {
     inject('getMarginValue', (value) => {
       return value
     })
+
+    inject('getPaddingValue', (value) => {
+        return value
+    })
   }

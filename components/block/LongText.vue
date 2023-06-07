@@ -1,14 +1,13 @@
 <template>
-  <div class="flex flex-col justify-center">
+    <div class="flex flex-col justify-center">
     <span 
-      v-if="block.text" 
-      class="block py-0" 
+      v-if="block.long_text" 
+      class="block" 
       :class="[block.mobile_font_size, block.font_size]" 
       :style="{
         color: block.text_color,
-      }
-      ">
-      {{ block.text }}
+      }"
+      v-html="block.long_text">
     </span>
   </div>
 </template>
@@ -18,8 +17,8 @@ export default {
     props: {
         block: {
             type: Object,
-            required: true,
-        },
+            required: true
+        }
     }
 }
 </script>
