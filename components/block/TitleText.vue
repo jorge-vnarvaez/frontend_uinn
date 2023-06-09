@@ -3,7 +3,7 @@
     <span
       v-if="block.text"
       ref="textElement"
-      :class="['block py-0', block.align, block.mobile_font_size, block.font_size]"
+      :class="['block py-0 font-gotham', block.align, block.mobile_font_size, block.font_size]"
       :style="{
         color: block.text_color,
       }"

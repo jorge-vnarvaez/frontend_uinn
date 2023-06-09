@@ -4,7 +4,7 @@
       :src="$config.apiUrlV2 + '/assets/' + image"
       max-width="100%"
       height="100%"
-      :class="{ 'fade-in': showText }"
+      :class="block.animation ? { 'fade-in': showText } : {}"
       contain
     ></v-img>
   </div>
@@ -56,7 +56,7 @@ export default {
 .fade-in {
   opacity: 0;
   animation-name: fadeIn;
-  animation-duration: 10s;
+  animation-duration: 5s;
   animation-composition: ease-in-out;
   animation-fill-mode: forwards;
 }

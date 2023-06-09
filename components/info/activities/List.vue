@@ -2,18 +2,18 @@
   <v-container class="max-w-screen-xl mx-auto">
     <v-row>
       <v-col v-for="activity in activities" :key="activity.id" cols="12" lg="4">
-        <v-card elevation="0" class="rounded-2xl border border-slate-200">
+        <v-card elevation="0" class="rounded-2xl border border-slate-200 px-4 py-4">
           <div>
             <v-img
-              v-if="activity.featured_image"
-              :src="$config.apiUrlV2 + '/assets/' + activity.featured_image.id"
+              v-if="activity.imagen"
+              :src="$config.apiUrlV2 + '/assets/' + activity.imagen.id"
               height="250"
-              class="rounded-t-2xl"
+              class="rounded-md"
             ></v-img>
           </div>
 
           <v-card-title class="text-lg whitespace-normal break-normal h-20">
-            {{ activity.title }}
+            {{ activity.name }}
           </v-card-title>
 
           <v-card-text class="whitespace-normal break-normal h-48">

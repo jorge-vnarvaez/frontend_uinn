@@ -292,23 +292,39 @@
                 ></v-img>
               </div>
 
-              <div>
+              <div class="lg:px-20">
                 <span
-                  class="block mt-2 text-center font-gotham font-bold text-lg lg:text-xl"
+                  class="block mt-2 font-gotham font-bold text-lg lg:text-xl"
                   >{{ team_member.name }}</span
                 >
                 <span
-                  class="block mt-2 text-center font-inter font-light text-[18px]"
+                  class="block font-inter font-thin text-[16px] text-slate-400"
                   >{{ team_member.position }}</span
                 >
-                <span
+                <!-- <span
                   class="block mt-2 text-center text-slate-700 font-inter text-[14px]"
                   >{{ team_member.email }}</span
-                >
+                > -->
+
+                <div class="mt-4">
+                <!-- LINKEDIN -->
+                  <a :href="team_member.linkedin" target="_blank">
+                    <font-awesome-icon
+                      icon="fa-brands fa-linkedin-in"
+                      class="w-5 h-5 text-slate-900"
+                      color="black"
+                    />
+                  </a>
+                <!-- LINKEDIN -->
+                </div>
+
+
+
+                <v-divider class="my-4"></v-divider>
               </div>
             </div>
 
-            <div class="pa-6">
+            <!-- <div class="pa-6">
               <div class="flex flex-wrap">
                 <div
                   v-for="(tag, index) in team_member.tags"
@@ -324,7 +340,7 @@
                   </v-chip>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </v-col>
       </v-row>
