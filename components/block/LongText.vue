@@ -2,7 +2,7 @@
     <div class="flex flex-col justify-center">
     <span 
       v-if="block.long_text" 
-      class="block" 
+      class="block leading-loose lg:leading-loose" 
       :class="[block.mobile_font_size, block.font_size]" 
       :style="{
         color: block.text_color,

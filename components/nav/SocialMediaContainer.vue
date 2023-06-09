@@ -1,46 +1,50 @@
 <template>
-  <v-container class="max-w-screen-xl mx-auto px-0">
+  <v-container class="max-w-screen-xl mx-auto px-0 ">
     <div
       :class="[
-        'absolute right-0 w-80 h-screen',
+        'absolute right-20 w-10 h-screen flex align-center',
         parent_type == 'page' ? 'top-0' : 'top-20',
       ]"
     >
-      <div class="h-full flex flex-col space-y-8 align-center justify-center">
+      <div class="h-80 bg-green-400 flex flex-col space-y-8 align-center justify-center rounded-full">
         <!-- LINKEDIN -->
         <a :href="linkedin" target="_blank">
           <font-awesome-icon
             icon="fa-brands fa-linkedin-in"
-            class="w-8 h-8"
+            class="w-6 h-6"
             :color="icon_color_mode"
           />
         </a>
         <!-- LINKEDIN -->
 
         <!-- TWITTER -->
-        <font-awesome-icon
-          icon="fa-brands fa-twitter"
-          class="w-8 h-8"
-          :color="icon_color_mode"
-        />
+        <a :href="twitter" target="_blank">
+          <font-awesome-icon
+            icon="fa-brands fa-twitter"
+            class="w-6 h-6"
+            :color="icon_color_mode"
+          />
+        </a>
         <!-- TWITTER -->
 
         <!-- INSTAGRAM -->
         <a :href="instagram" target="_blank">
           <font-awesome-icon
             icon="fa-brands fa-instagram"
-            class="w-8 h-8"
+            class="w-6 h-6"
             :color="icon_color_mode"
           />
         </a>
         <!-- INSTAGRAM -->
 
         <!-- FACEBOOK -->
-        <font-awesome-icon
-          icon="fa-brands fa-facebook-f"
-          class="w-8 h-8"
-          :color="icon_color_mode"
-        />
+        <a :href="facebook" target="_blank">
+          <font-awesome-icon
+            icon="fa-brands fa-facebook-f"
+            class="w-6 h-6"
+            :color="icon_color_mode"
+          />
+        </a>
         <!-- FACEBOOK -->
       </div>
     </div>
@@ -57,7 +61,7 @@ export default {
     icon_color_mode: {
       type: String,
       required: false,
-      default: "white",
+      default: "black",
     },
   },
   computed: {
@@ -66,6 +70,12 @@ export default {
     },
     linkedin() {
       return this.$store.getters["social_media/getLinkedin"];
+    },
+    facebook() {
+      return this.$store.getters["social_media/getFacebook"];
+    },
+    twitter() {
+      return this.$store.getters["social_media/getTwitter"];
     },
   },
 };

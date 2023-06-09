@@ -13,16 +13,16 @@
 
 
     <div v-if="['Rounded Outlined Text'].includes(block.button_type)">
-        <v-btn  rounded outlined small>
-            Noticias
+        <v-btn rounded outlined small :color="block.text_color">
+            {{ block.text }}
         </v-btn>
     </div>
 
     <div v-if="['Outlined Icon + Text'].includes(block.button_type)">
-          <v-btn outlined plain>
-                <v-icon>mdi-plus</v-icon>
-                <v-divider vertical class="text-slate-800"></v-divider>
-                <span class="px-4">Info aquí</span>
+          <v-btn outlined small :color="block.text_color">
+                <v-icon class="pr-4">mdi-plus</v-icon>
+                <v-divider vertical class="text-slate-800 py-0" :color="block.text_color"></v-divider>
+                <span class="px-4">{{ block.text }}</span>
           </v-btn>
     </div>
   </div>

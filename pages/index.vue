@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <div v-for="section in page.sections" 
+  <div class="py-0">
+    <div v-for="section in page.sections" class="py-0" 
         :key="section.id" 
         :style="{ 
+          height: section.sections_id.full_height ? '100vh' : '100%',
+          display: section.sections_id.full_height ? 'flex' : '',
+          alignItems: section.sections_id.full_height ? 'center' : '',
           backgroundColor: section.sections_id.color_from,
           padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
          }" >
-            <v-container class="max-w-screen-xl mx-auto px-0" v-if="section.sections_id.blocks">
-              <v-row>
+            <v-container class="max-w-screen-xl mx-auto px-0 py-0" v-if="section.sections_id.blocks">
+              <v-row class="py-0">
                 <BlockComponent
                   v-for="block in section.sections_id.blocks"
                   :key="block.id"
@@ -17,6 +20,8 @@
               </v-row>
             </v-container> 
     </div>
+
+    <NavSocialMediaContainer v-if="!$vuetify.breakpoint.mobile" parent_type="page"  />
   </div>
 </template>
 
@@ -30,16 +35,6 @@ export default {
   },
   async fetch() {
     await this.$store.dispatch("pages/loadPage", "inicio");
-    
-    // this.$store.commit(
-    //   "ui/setIndexHeroImage",
-    //   this.$config.apiUrlV2 + "/assets/" + this.page.header.hero_image.id
-    // );
-
-    //  this.$store.commit(
-    //   "ui/setActiveHeroImage",
-    //   this.$config.apiUrlV2 + "/assets/" + this.page.header.hero_image.id
-    // );
   },
   mounted() {
     this.$store.commit("ui/setActiveParentType", "page");

@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-black py-8" :style="ui_settings">
+  <footer class="bg-black py-8">
     <v-container class="px-0">
       <div class="max-w-screen-xl mx-auto">
         <div class="grid grid-cols-12 gap-y-12 lg:gap-y-0">

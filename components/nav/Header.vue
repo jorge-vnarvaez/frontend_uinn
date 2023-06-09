@@ -74,7 +74,7 @@
                 ></BlockComponent>
               </v-row>
 
-              <NavSocialMediaContainer v-if="!$vuetify.breakpoint.mobile" parent_type="page" :icon_color_mode="page.header.icon_color_mode" />
+              
             </v-container>
           </div>
         </div>
@@ -144,30 +144,23 @@ export default {
           hoverable: true,
           childrens: [
             {
-              slug: "estrategia-transformacional",
-              title: "Estrategia transformacional",
-              href: "/servicios/estrategia-transformacional",
-            },
-            // {
-            //   slug: "seguimiento-estrategico",
-            //   title: "Seguimiento estratégico",
-            //   href: "/servicios/estrategia-organizacional",
-            // },
-            // {
-            //   slug: "formacion-ejecutiva",
-            //   title: "Formación ejecutiva",
-            //   href: "/servicios/formacion-ejecutiva",
-            // },
-            {
               slug: "gestion-de-la-innovacion",
               title: "Gestión de la innovación",
               href: "/servicios/gestion-de-la-innovacion",
+              img: 'https://apiuinnv2.uinn.cl/assets/992c1f78-fd89-493c-bcd7-d580fa3c85ec'
             },
-            // {
-            //   slug: "desarrollo-de-ecosistemas",
-            //   title: "Desarrollo de ecosistemas",
-            //   href: "/servicios/desarrollo-de-ecosistemas",
-            // },
+            {
+              slug: "desarrollo-de-ecosistemas",
+              title: "Desarrollo de ecosistemas",
+              href: "/servicios/desarrollo-de-ecosistemas",
+              img: 'https://apiuinnv2.uinn.cl/assets/ce7f23d6-256d-424f-8194-466b41d7d40e'
+            },
+            {
+              slug: "estrategia-transformacional",
+              title: "Estrategia transformacional",
+              href: "/servicios/estrategia-transformacional",
+              img: 'https://apiuinnv2.uinn.cl/assets/a069fd9f-e324-4976-b5ff-6f704a110dde'
+            },
           ],
         },
         {

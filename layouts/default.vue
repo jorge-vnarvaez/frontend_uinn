@@ -1,26 +1,26 @@
 <template>
   <v-app>
     <!-- Start of HubSpot Embed Code -->
-    <!-- <script
+    <script
       type="text/javascript"
       id="hs-script-loader"
       async
       defer
       src="//js.hs-scripts.com/39490607.js"
-    ></script> -->
+    ></script>
     <!-- End of HubSpot Embed Code -->
-    <!-- <script
+    <script
       charset="utf-8"
       type="text/javascript"
       src="//js.hsforms.net/forms/embed/v2.js"
-    ></script> -->
-    <!-- <div v-if="!contentWasRendered">
+    ></script>
+    <div v-if="!contentWasRendered">
       <PageLoader :percentage="progress" />
-    </div> -->
-    <div>
+    </div>
+    <div v-if="contentWasRendered">
       <NavHeader />
       <Nuxt  />
-      <!-- <NavFooter /> -->
+      <NavFooter />
     </div>
   </v-app>
 </template>
@@ -37,28 +37,29 @@ export default {
       progress: 0,
     };
   },
-  // async beforeMount() {
-  //   this.startTime = new Date().getTime();
-  //   await Promise.all([
-  //     this.$store.dispatch("ui/loadUiSettings"),
-  //     this.$store.dispatch("services/loadServices"),
-  //     this.$store.dispatch("activities/liveActivity"),
-  //     this.$store.dispatch("social_media/loadSocialMediaObject"),
-  //   ]).then((res) => {
-  //     this.uiSettingsLoaded = true;
-  //     let interval = setInterval(() => {
-  //       let currentTime = new Date().getTime();
-  //       let timeElapsed = currentTime - this.startTime;
+  async beforeMount() {
+    this.startTime = new Date().getTime();
+    await Promise.all([
+      // this.$store.dispatch("ui/loadUiSettings"),
+      // this.$store.dispatch("services/loadServices"),
+      // this.$store.dispatch("activities/liveActivity"),
+      this.$store.dispatch("pages/loadPage", "inicio"),
+      this.$store.dispatch("social_media/loadSocialMediaObject"),
+    ]).then((res) => {
+      this.uiSettingsLoaded = true;
+      let interval = setInterval(() => {
+        let currentTime = new Date().getTime();
+        let timeElapsed = currentTime - this.startTime;
 
-  //       this.progress = Math.round((timeElapsed / this.totalTime) * 100);
-  //       if (this.progress >= 100) {
-  //         this.progress = 100;
-  //         clearInterval(interval);
-  //         this.contentWasRendered = true;
-  //       }
-  //     }, 100);
-  //   });
-  // },
+        this.progress = Math.round((timeElapsed / this.totalTime) * 100);
+        if (this.progress >= 100) {
+          this.progress = 100;
+          clearInterval(interval);
+          this.contentWasRendered = true;
+        }
+      }, 100);
+    });
+  },
   computed: {
     ui_settings() {
       return this.$store.getters["ui/getUiSettings"];

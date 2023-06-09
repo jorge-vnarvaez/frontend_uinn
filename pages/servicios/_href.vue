@@ -5,6 +5,9 @@
         v-for="section in service.sections"
         :key="section.id"
         :style="{ 
+            height: section.sections_id.full_height ? '100vh' : '100%',
+            display: section.sections_id.full_height ? 'flex' : '',
+            alignItems: section.sections_id.full_height ? 'center' : '',
             backgroundColor: section.sections_id.color_from,
             padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
        }" 
@@ -22,6 +25,8 @@
             </BlockComponent>
           </v-row>
         </v-container>
+
+        <!-- <NavSocialMediaContainer v-if="!$vuetify.breakpoint.mobile && section.sections_id.plugin_social_media" parent_type="page"  /> -->
       </div>
     </div>
   </div>
