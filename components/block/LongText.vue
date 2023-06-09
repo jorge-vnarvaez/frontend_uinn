@@ -3,7 +3,7 @@
     <span 
       v-if="block.long_text" 
       class="block leading-loose lg:leading-loose font-inter" 
-      :class="[block.mobile_font_size, block.font_size]" 
+      :class="[block.align, block.mobile_font_size, block.font_size]" 
       :style="{
         color: block.text_color,
       }"
