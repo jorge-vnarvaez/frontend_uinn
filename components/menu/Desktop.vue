@@ -2,7 +2,7 @@
 <div>
   <div class="flex space-x-20 justify-center align-center">
     <div v-for="item in list" :key="item.id">
-      <nuxt-link v-if="!item.hoverable" :to="item.href" class="text-slate-900">
+      <nuxt-link v-if="!item.hoverable" :to="item.href" class="text-slate-900 cursor-pointer">
           <span @mouseover="servicesCard = false">{{ item.title }}</span>
       </nuxt-link>
 
@@ -11,15 +11,11 @@
           <span>{{ item.title }}</span>
           <div v-if="item.hoverable && servicesCard && item.hoverable" 
           class="absolute bg-white shadow-2xl mt-6 z-10 top-10 rounded-lg" @mouseleave="servicesCard = false; childrenOnHover = null">
-            <div class="px-4 py-3 rounded-lg" v-for="children in item.childrens" :key="children.slug">
-              <nuxt-link :to="children.href" class="flex justify-between lg:space-x-6">
-                <span  @mouseover="childrenOnHover = children.slug"  class="text-slate-900 hover:font-bold">
+            <div class="px-4 cursor-pointer py-3 rounded-lg" v-for="children in item.childrens" :key="children.slug">
+              <nuxt-link :to="children.href" class="flex justify-between lg:space-x-6 cursor-pointer">
+                <span @mouseover="childrenOnHover = children.slug"  class="text-slate-900 hover:font-bold cursor-pointer">
                   {{ children.title }}
                 </span>
-
-                <v-img v-if="childrenOnHover == children.slug" :src="children.img" width="24" height="24" contain></v-img>
-
-                <!-- <v-icon :class="[childrenOnHover == children.slug ? 'visible font-bold' : 'collapse']" small>mdi-arrow-top-right</v-icon> -->
               </nuxt-link>
             </div>
           </div>

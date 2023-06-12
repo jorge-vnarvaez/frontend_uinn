@@ -1,5 +1,5 @@
 <template>
-  <div class="py-24 h-screen">
+  <div class="py-24">
     <InfoActivitiesList />
   </div>
 </template>

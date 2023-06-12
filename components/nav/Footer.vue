@@ -1,7 +1,7 @@
 <template>
-  <footer class="bg-black py-8">
+  <footer class="bg-[#5811F1] py-8">
     <v-container class="px-0">
-      <div class="max-w-screen-xl mx-auto">
+      <div class="max-w-screen-xl mx-auto" :style="{ padding: $vuetify.breakpoint.mobile ? $generalPadding() : '' }">
         <div class="grid grid-cols-12 gap-y-12 lg:gap-y-0">
           <div class="flex flex-col text-white col-span-12 lg:col-span-4">
             <v-img
@@ -29,7 +29,9 @@
               <!-- LINKEDIN -->
 
               <!-- TWITTER -->
-              <font-awesome-icon icon="fa-brands fa-twitter" class="w-8 h-8" />
+              <a :href="twitter" target="_blank">
+                <font-awesome-icon icon="fa-brands fa-twitter" class="w-8 h-8" />
+              </a>
               <!-- TWITTER -->
 
               <!-- INSTAGRAM -->
@@ -42,10 +44,12 @@
               <!-- INSTAGRAM -->
 
               <!-- FACEBOOK -->
-              <font-awesome-icon
-                icon="fa-brands fa-facebook-f"
-                class="w-8 h-8"
-              />
+              <a :href="facebook" target="_blank">
+                <font-awesome-icon
+                  icon="fa-brands fa-facebook-f"
+                  class="w-8 h-8"
+                />
+              </a>
               <!-- FACEBOOK -->
             </div>
             <!-- SOCIAL MEDIA -->
@@ -57,7 +61,7 @@
             class="text-white grid grid-cols-12 col-span-12 lg:col-span-8 gap-y-8 lg:gap-y-0"
           >
             <!-- NOSOTROS -->
-            <div class="flex flex-col cursor-pointer col-span-6 lg:col-span-4">
+            <div class="flex flex-col cursor-pointer col-span-12 lg:col-span-4">
               <span class="block mb-2 font-bold text-lg">Nosotros</span>
               <div class="flex flex-col text-sm space-y-2">
                 <nuxt-link :to="{ path: '/acerca_nuestro' }"
@@ -74,13 +78,13 @@
             <!-- NOSOTROS -->
 
             <!-- SERVICIOS -->
-            <div class="flex flex-col col-span-6 lg:col-span-4">
+            <div class="flex flex-col col-span-12 lg:col-span-4">
               <span class="block mb-2 font-bold text-lg">Servicios</span>
               <div class="flex flex-col text-sm space-y-2">
                 <div v-for="service in services" :key="service.id">
-                  <nuxt-link :to="{ path: '/servicios/' + service.href }"
+                  <nuxt-link :to="{ path: '/servicios/' + service.slug }"
                     ><span class="text-white normal-case">{{
-                      service.title
+                      service.name
                     }}</span></nuxt-link
                   >
                 </div>
@@ -96,9 +100,9 @@
         <div
           class="w-full text-white flex flex-col lg:flex-row justify-center align-center lg:space-x-4"
         >
-          <span class="font-semibold">Uinn.cl</span>
+          <span class="font-semibold">uinn.cl</span>
           <v-divider vertical class="bg-white"></v-divider>
-          <span class="font-semibold">2019-2022</span>
+          <span class="font-semibold">2019-2023</span>
 
           <span>Todos los derechos reservados &#174;</span>
         </div>
@@ -124,6 +128,12 @@ export default {
     },
     linkedin() {
       return this.$store.getters["social_media/getLinkedin"];
+    },
+    facebook() {
+      return this.$store.getters["social_media/getFacebook"];
+    },
+    twitter() {
+      return this.$store.getters["social_media/getTwitter"];
     },
   },
 };

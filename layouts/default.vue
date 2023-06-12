@@ -41,8 +41,8 @@ export default {
     this.startTime = new Date().getTime();
     await Promise.all([
       // this.$store.dispatch("ui/loadUiSettings"),
-      // this.$store.dispatch("services/loadServices"),
       // this.$store.dispatch("activities/liveActivity"),
+      this.$store.dispatch("services/loadServices"),
       this.$store.dispatch("pages/loadPage", "inicio"),
       this.$store.dispatch("social_media/loadSocialMediaObject"),
     ]).then((res) => {

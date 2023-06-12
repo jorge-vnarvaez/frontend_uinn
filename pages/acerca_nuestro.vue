@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-for="section in page.sections" 
+  <div class="py-0" >
+    <div v-for="section in page.sections" class="py-0" 
         :key="section.id" 
         :style="{
            height: section.sections_id.full_height ? '100vh' : '100%',
@@ -11,10 +11,10 @@
            backgroundSize: 'cover',
            backgroundRepeat: 'no-repeat',
            backgroundPosition: 'center center',
-           padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
+           padding: $generalPadding()
          }" >
 
-      <v-container class="max-w-screen-xl mx-auto px-0" v-if="section.sections_id.blocks">
+      <v-container class="max-w-screen-xl mx-auto px-0 py-0" v-if="section.sections_id.blocks">
         <v-row>
           <BlockComponent
             v-for="block in section.sections_id.blocks"

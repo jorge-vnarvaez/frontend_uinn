@@ -1,16 +1,17 @@
 <template>
   <div>
-    <div class="py-16">
+    <div class="pt-16">
       <div
         v-for="section in service.sections"
         :key="section.id"
         :style="{ 
-            height: section.sections_id.full_height ? '100vh' : '100%',
+            height: $sectionHeight(section.sections_id.full_height),
             display: section.sections_id.full_height ? 'flex' : '',
             alignItems: section.sections_id.full_height ? 'center' : '',
             backgroundColor: section.sections_id.color_from,
-            padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
-       }" 
+            padding: $generalPadding()
+       }"
+       class="py-0"
       >
         <v-container
           class="max-w-screen-xl mx-auto px-0"

@@ -13,6 +13,7 @@
         ? $getPaddingValue(block.mobile_padding_bottom)
         : $getPaddingValue(block.padding_bottom),
     }"
+    v-if="$vuetify.breakpoint.mobile ? !block.visibility : true"
   >
     <!-- TITLE AND TEXT -->
     <div v-if="['Text'].includes(block.format)">
@@ -200,6 +201,24 @@
     </div>
     <!-- INNER TAB -->
 
+
+    <!-- MATRIX -->
+    <div v-if="['Matrix'].includes(block.format)">
+       <div>
+        <v-container class="max-w-screen-xl mx-auto">
+          <v-row>
+            <BlockComponent
+              v-for="child in block.childs"
+              :key="child.id"
+              :block="child"
+            >
+            </BlockComponent>
+          </v-row>
+        </v-container>
+      </div>
+    </div>
+    <!-- MATRIX -->
+
     <!-- GROUP -->
     <div v-if="['Group'].includes(block.format)">
       <div>
@@ -292,7 +311,7 @@
                 ></v-img>
               </div>
 
-              <div class="lg:px-20">
+              <div class="lg:px-8">
                 <span
                   class="block mt-2 font-gotham font-bold text-lg lg:text-xl"
                   >{{ team_member.name }}</span
@@ -307,7 +326,7 @@
                 > -->
 
                 <div class="mt-4">
-                <!-- LINKEDIN -->
+                  <!-- LINKEDIN -->
                   <a :href="team_member.linkedin" target="_blank">
                     <font-awesome-icon
                       icon="fa-brands fa-linkedin-in"
@@ -315,32 +334,30 @@
                       color="black"
                     />
                   </a>
-                <!-- LINKEDIN -->
+                  <!-- LINKEDIN -->
                 </div>
-
-
 
                 <v-divider class="my-4"></v-divider>
-              </div>
-            </div>
 
-            <!-- <div class="pa-6">
-              <div class="flex flex-wrap">
-                <div
-                  v-for="(tag, index) in team_member.tags"
-                  :key="tag.labels_id.id"
-                >
-                  <v-chip
-                    class="mr-4 mb-4"
-                    outlined
-                    label
-                    :color="index == 0 ? 'purple' : 'black'"
-                  >
-                    {{ tag.labels_id.title }}
-                  </v-chip>
+                <div class="py-4">
+                  <div class="flex flex-wrap">
+                    <div
+                      v-for="(tag, index) in team_member.tags"
+                      :key="tag.tags_id.id"
+                    >
+                      <v-chip
+                        class="mr-4 mb-4"
+                        outlined
+                        label
+                        :color="index == 0 ? 'purple' : 'black'"
+                      >
+                        {{ tag.tags_id.title }}
+                      </v-chip>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div> -->
+            </div>
           </div>
         </v-col>
       </v-row>

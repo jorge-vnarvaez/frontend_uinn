@@ -1,13 +1,13 @@
 <template>
-  <div class="py-0">
+  <div class="pb-0 w-full">
     <div v-for="section in page.sections" class="py-0" 
         :key="section.id" 
         :style="{ 
-          height: section.sections_id.full_height ? '100vh' : '100%',
+          height: $sectionHeight(section.sections_id.full_height),
           display: section.sections_id.full_height ? 'flex' : '',
           alignItems: section.sections_id.full_height ? 'center' : '',
           backgroundColor: section.sections_id.color_from,
-          padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
+          padding: $generalPadding()
          }" >
             <v-container class="max-w-screen-xl mx-auto px-0 py-0" v-if="section.sections_id.blocks">
               <v-row class="py-0">
@@ -39,7 +39,7 @@ export default {
   mounted() {
     this.$store.commit("ui/setActiveParentType", "page");
 
-    console.log(this.page)
+    console.log(this.$vuetify)
   },
   computed: {
     page() {
