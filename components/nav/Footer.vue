@@ -30,7 +30,7 @@
 
               <!-- TWITTER -->
               <a :href="twitter" target="_blank">
-                <font-awesome-icon icon="fa-brands fa-twitter" class="w-8 h-8" />
+                <font-awesome-icon icon="fa-brands fa-twitter" class="w-8 h-8 text-white" />
               </a>
               <!-- TWITTER -->
 
@@ -47,7 +47,7 @@
               <a :href="facebook" target="_blank">
                 <font-awesome-icon
                   icon="fa-brands fa-facebook-f"
-                  class="w-8 h-8"
+                  class="w-8 h-8 text-white"
                 />
               </a>
               <!-- FACEBOOK -->
