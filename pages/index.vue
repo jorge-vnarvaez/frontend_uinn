@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-0 w-full">
+  <div class="pb-0 w-full py-0">
     <div v-for="section in page.sections" class="py-0" 
         :key="section.id" 
         :style="{ 
@@ -38,8 +38,6 @@ export default {
   },
   mounted() {
     this.$store.commit("ui/setActiveParentType", "page");
-
-    console.log(this.$vuetify)
   },
   computed: {
     page() {

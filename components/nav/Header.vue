@@ -5,15 +5,15 @@
     >
       <v-container class="px-0">
         <div class="max-w-screen-xl mx-auto" :style="{
-          padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
+          padding: $vuetify.breakpoint.mobile ? '0% 8%' : ''
         }">
           <div class="flex align-center justify-between">
             <!-- LOGO -->
             <div @click="home" class="cursor-pointer z-30">
               <v-img
                 src="/uinn-logo.png"
-                width="75"
-                height="40"
+                :width="70"
+                :height="40"
                 contain
               ></v-img>
             </div>
@@ -28,96 +28,44 @@
             <!-- MOBILE MENU -->
 
             <!-- SEARCH -->
-            <div class="cursor-pointer" v-if="!$vuetify.breakpoint.mobile">
+            <div class="cursor-pointer" v-if="!$vuetify.breakpoint.mobile" @click="searchBar = true">
               <v-icon class="text-slate-900">mdi-magnify</v-icon>
             </div>
+
+          
             <!-- SEARCH -->
 
             <!-- OPEN MENU -->
-            <div
+            <!-- <div
               class="cursor-pointer"
               v-if="$vuetify.breakpoint.mobile && !navigationDrawerState"
               @click="$store.commit('ui/setNavigationDrawerState', true)"
             >
               <v-icon class="text-slate-900">mdi-menu</v-icon>
-            </div>
+            </div> -->
             <!-- OPEN MENU -->
           </div>
         </div>
+
+           
       </v-container>
+
+      <!-- <div v-if="searchBar" class="bg-white drop-shadow-xl absolute top-0 w-full z-50">
+        <v-container>
+          <div class="max-w-screen-xl mx-auto py-6">
+            <div class="flex justify-between">
+              <span>
+                Search bar yay!
+              </span>
+
+                <div class="cursor-pointer" v-if="!$vuetify.breakpoint.mobile & searchBar" @click="searchBar = false">
+              <v-icon class="text-slate-900">mdi-close</v-icon>
+            </div>
+            </div>
+          </div>
+        </v-container>
+      </div> -->
     </nav>
-
-    <!-- LIVE EVENT -->
-    <!-- <div v-if="liveActivity">
-      <InfoActivitiesLive :liveActivity="liveActivity" />
-    </div> -->
-    <!-- LIVE EVENT -->
-
-    <!-- HEADER HERO -->
-    <!-- <div v-if="is_page">
-      <div
-        v-if="page.header"
-        :style="page.header.hero_image == null ? { height: '100vh' } : bg"
-      >
-        <div
-          class="max-w-screen-xl mx-auto"
-          v-if="is_page && !blank_page"
-          :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
-        >
-          <div class="text-white h-screen flex align-center" v-if="page.header">
-            <v-container class="px-6">
-              <v-row>
-                <BlockComponent
-                  v-for="block in page.header.blocks"
-                  :key="block.id"
-                  :block="block"
-                ></BlockComponent>
-              </v-row>
-
-              
-            </v-container>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- HEADER HERO -->
-
-    <!-- HEADER SERVICE -->
-    <!-- <div v-if="!is_page && !blank_page">
-      <NavServiceHeader />
-    </div> -->
-    <!-- HEADER SERVICE -->
-
-    <!-- HERO IMAGE -->
-    <!-- <div v-if="is_page">
-      <div
-        v-if="page.hero != null"
-        :style="{
-          backgroundColor: page.hero.bg_color,
-          height: 'auto',
-          display: 'flex',
-          flexDirection: 'column',
-        }"
-      >
-        <div
-          class="max-w-screen-xl mx-auto"
-          :style="$vuetify.breakpoint.mobile ? ui_settings : {}"
-        >
-          <div class="text-white h-screen flex align-center" v-if="page.hero">
-            <v-container class="px-6">
-              <v-row>
-                <BlockComponent
-                  v-for="block in page.hero.blocks"
-                  :key="block.id"
-                  :block="block"
-                ></BlockComponent>
-              </v-row>
-            </v-container>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- HERO IMAGE -->
   </div>
 </template>
 
@@ -126,6 +74,7 @@ export default {
   data() {
     return {
       servicesCard: false,
+      searchBar: false,
       navItems: [
         {
           id: 2,

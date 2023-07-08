@@ -30,6 +30,11 @@
         <!-- <NavSocialMediaContainer v-if="!$vuetify.breakpoint.mobile && section.sections_id.plugin_social_media" parent_type="page"  /> -->
       </div>
     </div>
+
+      <NavSocialMediaContainer
+      v-if="!$vuetify.breakpoint.mobile"
+      parent_type="page"
+    />
   </div>
 </template>
 

@@ -35,19 +35,22 @@ export default {
   plugins: [
     { src: '~/plugins/spacingToClass.js' },
     { src: '~/plugins/objectToQueryString.js' },
-    { src: '~/plugins/fontawesome.js' },
+    // { src: '~/plugins/fontawesome.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
+  
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxt/postcss8',
     '@nuxtjs/moment',
   ],
+
+  image: {
+
+  },
 
   // Moment js config
   moment: {
@@ -91,5 +94,13 @@ export default {
         autoprefixer: {},
       },
     },
+    optimization :{
+      splitChunks: {
+        chunks: 'all',
+        automaticNameDelimiter: '.',
+        name: 'app',
+        maxSize : 256000
+      }
+    }
   }
 }

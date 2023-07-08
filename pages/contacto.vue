@@ -50,15 +50,7 @@
 export default {
   async fetch() {
     await this.$store.dispatch("pages/loadPage", "contacto");
-
     this.$store.commit("ui/setActiveParentType", "page");
-
-    // if (this.page.header) {
-    //   this.$store.commit(
-    //     "ui/setActiveHeroImage",
-    //     this.$config.apiUrlV2 + "/assets/" + this.page.header.hero_image.id
-    //   );
-    // }
   },
   computed: {
     page() {

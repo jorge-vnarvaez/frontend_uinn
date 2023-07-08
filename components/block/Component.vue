@@ -297,13 +297,12 @@
           cols="12"
           lg="4"
         >
-          <div>
             <div class="pa-6">
               <div class="w-full">
                 <v-img
                   class="mb-6"
                   :src="$config.apiUrlV2 + '/assets/' + team_member.photo.id"
-                  width="208"
+                  width="508"
                   height="208"
                   max-width="100%"
                   min-width="100%"
@@ -358,7 +357,6 @@
                 </div>
               </div>
             </div>
-          </div>
         </v-col>
       </v-row>
     </div>

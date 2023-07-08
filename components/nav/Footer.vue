@@ -21,34 +21,25 @@
             <div class="mt-4 flex space-x-6">
               <!-- LINKEDIN -->
               <a :href="linkedin" target="_blank">
-                <font-awesome-icon
-                  icon="fa-brands fa-linkedin-in"
-                  class="w-8 h-8 text-white"
-                />
+                   <v-icon color="white">mdi-linkedin</v-icon>
               </a>
               <!-- LINKEDIN -->
 
               <!-- TWITTER -->
               <a :href="twitter" target="_blank">
-                <font-awesome-icon icon="fa-brands fa-twitter" class="w-8 h-8 text-white" />
+                  <v-icon color="white">mdi-twitter</v-icon>
               </a>
               <!-- TWITTER -->
 
               <!-- INSTAGRAM -->
               <a :href="instagram" target="_blank">
-                <font-awesome-icon
-                  icon="fa-brands fa-instagram"
-                  class="w-8 h-8 text-white"
-                />
+                  <v-icon color="white">mdi-instagram</v-icon>
               </a>
               <!-- INSTAGRAM -->
 
               <!-- FACEBOOK -->
               <a :href="facebook" target="_blank">
-                <font-awesome-icon
-                  icon="fa-brands fa-facebook-f"
-                  class="w-8 h-8 text-white"
-                />
+                  <v-icon color="white">mdi-facebook</v-icon>
               </a>
               <!-- FACEBOOK -->
             </div>

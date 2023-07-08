@@ -3,38 +3,42 @@
     <div
       class="bg-white w-full max-w-screen-xl mx-auto rounded-b-lg shadow-lg z-50"
       :style="{
-          padding: $vuetify.breakpoint.mobile ? '0% 10%' : ''
+        padding: $vuetify.breakpoint.mobile ? '0% 8%' : '',
       }"
     >
       <v-container class="px-0">
-        <div class="flex justify-between align-center">
-          <nuxt-link to="/">
+        <div class="flex justify-between align-center pb-4">
+
+          <v-icon v-if="parentActive" @click="parentActive = null" class="pt-2" small color="black">mdi-chevron-left</v-icon>
+
+          <nuxt-link to="/" v-if="parentActive == null">
             <v-img
               src="/uinn-logo.png"
-              width="75"
+              width="70"
               height="40"
               contain
               @click="$store.commit('ui/setNavigationDrawerState', false)"
             ></v-img>
           </nuxt-link>
+
+          <div v-if="parentActive" class="pt-2">
+            <!-- <v-icon @click="parentActive = null">mdi-chevron-left</v-icon> -->
+            <span class="block font-bold uppercase">{{ parent.title }}</span>
+          </div>
+
           <v-icon
+          class="pt-2"
+            small
             @click="
               $store.commit('ui/setNavigationDrawerState', false);
               parentActive = null;
             "
+            color="black"
             >mdi-close</v-icon
           >
         </div>
 
-        <div class="py-4">
-        </div>
-
         <div v-if="parentActive">
-          <div class="flex pb-4">
-            <!-- <v-icon @click="parentActive = null">mdi-chevron-left</v-icon> -->
-            <span class="block font-bold">{{ parent.title }}</span>
-          </div>
-
           <v-divider></v-divider>
 
           <div class="pt-4" v-if="parent.childrens.length > 0">
@@ -42,15 +46,16 @@
               v-for="children in parent.childrens"
               :key="children.slug"
               class="py-2"
-            >
-              <nuxt-link
-                :to="children.href"
                 @click="
                   parentActive = null;
                   $store.commit('ui/setNavigationDrawerState', false);
                 "
+            >
+              <nuxt-link
+                :to="children.href"
+              
               >
-                <span class="block text-sm text-slate-500">{{
+                <span class="block text-sm text-slate-800 uppercase">{{
                   children.title
                 }}</span>
               </nuxt-link>
@@ -64,7 +69,7 @@
               <span
                 class="text-slate-900"
                 @click="$store.commit('ui/setNavigationDrawerState', false)"
-                >{{ item.title }}</span 
+                >{{ item.title }}</span
               >
             </nuxt-link>
 

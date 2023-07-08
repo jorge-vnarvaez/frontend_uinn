@@ -10,7 +10,7 @@
           <div @mouseover="item.hoverable ? servicesCard = true : servicesCard = false">
           <span>{{ item.title }}</span>
           <div v-if="item.hoverable && servicesCard && item.hoverable" 
-          class="absolute bg-white shadow-2xl mt-6 z-10 top-10 rounded-lg" @mouseleave="servicesCard = false; childrenOnHover = null">
+          class="absolute bg-white shadow-2xl mt-6 z-10 top-10 w-[250px]" @mouseleave="servicesCard = false; childrenOnHover = null">
             <div class="px-4 cursor-pointer py-3 rounded-lg" v-for="children in item.childrens" :key="children.slug">
               <nuxt-link :to="children.href" class="flex justify-between lg:space-x-6 cursor-pointer">
                 <span @mouseover="childrenOnHover = children.slug"  class="text-slate-900 hover:font-bold cursor-pointer">

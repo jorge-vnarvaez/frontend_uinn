@@ -1,26 +1,25 @@
 <template>
   <v-app>
-    <!-- Start of HubSpot Embed Code -->
-    <script
-      type="text/javascript"
-      id="hs-script-loader"
-      async
-      defer
-      src="//js.hs-scripts.com/39490607.js"
-    ></script>
-    <!-- End of HubSpot Embed Code -->
-    <script
-      charset="utf-8"
-      type="text/javascript"
-      src="//js.hsforms.net/forms/embed/v2.js"
-    ></script>
     <div v-if="!contentWasRendered">
       <PageLoader :percentage="progress" />
     </div>
     <div v-if="contentWasRendered">
       <NavHeader />
-      <Nuxt  />
+      <Nuxt />
       <NavFooter />
+
+      <script
+        type="text/javascript"
+        id="hs-script-loader"
+        async
+        defer
+        src="//js.hs-scripts.com/39490607.js"
+      ></script>
+      <script
+        charset="utf-8"
+        type="text/javascript"
+        src="//js.hsforms.net/forms/embed/v2.js"
+      ></script>
     </div>
   </v-app>
 </template>

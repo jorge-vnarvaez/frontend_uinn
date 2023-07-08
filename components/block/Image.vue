@@ -4,7 +4,6 @@
       :src="$config.apiUrlV2 + '/assets/' + image"
       max-width="100%"
       height="100%"
-      :class="block.animation ? { 'fade-in': showText } : {}"
       contain
     ></v-img>
   </div>
