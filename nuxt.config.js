@@ -18,7 +18,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Unidad de innovación' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -94,13 +94,13 @@ export default {
         autoprefixer: {},
       },
     },
-    optimization :{
-      splitChunks: {
-        chunks: 'all',
-        automaticNameDelimiter: '.',
-        name: 'app',
-        maxSize : 256000
-      }
-    }
+    // optimization :{
+    //   splitChunks: {
+    //     chunks: 'all',
+    //     automaticNameDelimiter: '.',
+    //     name: 'app',
+    //     maxSize : 256000
+    //   }
+    // }
   }
 }
