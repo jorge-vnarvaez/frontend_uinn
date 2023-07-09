@@ -36,13 +36,13 @@
             <!-- SEARCH -->
 
             <!-- OPEN MENU -->
-            <!-- <div
+            <div
               class="cursor-pointer"
               v-if="$vuetify.breakpoint.mobile && !navigationDrawerState"
               @click="$store.commit('ui/setNavigationDrawerState', true)"
             >
               <v-icon class="text-slate-900">mdi-menu</v-icon>
-            </div> -->
+            </div>
             <!-- OPEN MENU -->
           </div>
         </div>
