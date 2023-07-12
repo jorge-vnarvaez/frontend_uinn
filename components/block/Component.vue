@@ -327,11 +327,7 @@
                 <div class="mt-4">
                   <!-- LINKEDIN -->
                   <a :href="team_member.linkedin" target="_blank">
-                    <font-awesome-icon
-                      icon="fa-brands fa-linkedin-in"
-                      class="w-5 h-5 text-slate-900"
-                      color="black"
-                    />
+                    <v-icon>mdi-linkedin</v-icon>
                   </a>
                   <!-- LINKEDIN -->
                 </div>

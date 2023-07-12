@@ -1,11 +1,12 @@
 <template>
   <div ref="imageElement">
-    <v-img
+    <nuxt-img
       :src="$config.apiUrlV2 + '/assets/' + image"
-      max-width="100%"
-      height="100%"
-      contain
-    ></v-img>
+      :placeholder="[100, 50, 80]"
+      format="webp"
+      fit="contain"
+      loading="lazy"
+    ></nuxt-img>
   </div>
 </template>
 
