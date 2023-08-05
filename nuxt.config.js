@@ -59,10 +59,14 @@ export default {
     defaultTimezone: 'America/Santiago'
   },
 
+  ssr: true,
+  target: 'server',
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
     '@nuxt/image',
+    'cookie-universal-nuxt',
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
