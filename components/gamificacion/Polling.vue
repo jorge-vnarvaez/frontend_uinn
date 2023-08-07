@@ -2,7 +2,7 @@
   <div class="py-32 max-w-screen-xl mx-auto">
     <div
       v-if="!loading && !has_ended && combinations.length > 0"
-      class="h-screen"
+      class="h-screen flex flex-col justify-center align-center"
     >
       <span
         class="block text-2xl lg:text-4xl font-black text-center text-[#1c355e]"
@@ -102,7 +102,10 @@
       </div>
     </div>
 
-    <div v-if="has_ended" class="h-screen flex flex-col justify-center align-center">
+    <div
+      v-if="has_ended"
+      class="h-screen flex flex-col justify-center align-center"
+    >
       <span class="block text-2xl lg:text-4xl font-black text-center">
         ¡Gracias por participar!
       </span>
@@ -117,8 +120,8 @@
       <p class="text-center font-sans text-xl mt-4">
         Recuerda que la información que nos haz entregado es anónima y será
         utilizada únicamente para fines de investigación. Nuevamente, te
-        agradecemos por tu participación. Al presionar el botón de abajo podrás revisar
-        los resultados generales de la encuesta
+        agradecemos por tu participación. Al presionar el botón de abajo podrás
+        revisar los resultados generales de la encuesta
       </p>
     </div>
   </div>
@@ -143,7 +146,6 @@ export default {
       .then(() => (this.loading = false));
 
     await this.$store.dispatch("encuesta/fetchCombinationsPlayed");
-
 
     if (this.combinations_played >= 120) {
       this.has_ended = true;
@@ -177,8 +179,12 @@ export default {
         loser_id: null,
         user: this.$cookies.get("gec_user_id"),
         pair: [
-          this.combinations[this.first_option].first_phrase.id,
-          this.combinations[this.first_option].second_phrase.id,
+          {
+            frases_id: this.combinations[this.first_option].first_phrase.id,
+          },
+          {
+            frases_id: this.combinations[this.first_option].second_phrase.id,
+          },
         ],
       });
 
