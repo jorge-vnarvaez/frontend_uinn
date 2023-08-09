@@ -1,6 +1,8 @@
 <template>
-  <div class="py-32 bg-slate-100">
-    <div class="max-w-screen-xl mx-auto flex justify-center">
+  <div class="py-32 bg-slate-100 h-fit lg:h-screen flex justify-center align-center">
+    <div class="max-w-screen-xl mx-auto flex justify-center" :style="{
+        padding: $vuetify.breakpoint.mobile ? '0% 8%' : '',
+      }">
       <v-card flat class="w-full lg:w-5/12 p-8">
         <v-form v-if="!user_is_back" ref="form" v-model="valid" lazy-validation>
           <v-text-field
@@ -37,8 +39,11 @@
             <template v-slot:label>
                 <div>¿Vives actualmente en Coronel?</div>
             </template>
+            <div class="flex">
             <v-radio label="Si" :value="true"></v-radio>
             <v-radio label="No" :value="false"></v-radio>
+
+            </div>
           </v-radio-group>
 
            <v-select
@@ -62,23 +67,26 @@
           </v-btn>
         </v-form>
 
-        <div v-if="user_is_back">
+        <div v-if="user_is_back" class="text-center">
           <p class="text-xl font-medium">Hola, nos da gusto tenerte de vuelta.</p>
           <span class="font-sans">
             ¿Quieres continuar con la encuesta donde la dejaste o prefieres ver los resultados actuales?
           </span>
 
-          <div class="mt-8">
+          <div class="mt-8 flex flex-col space-y-4 align-center">
             <v-btn 
               color="success" 
               outlined 
-              class="mr-4"
               to="/encuesta-coronel/gamificacion"
             >
               Continuar
             </v-btn>
 
-             <v-btn color="primary" outlined>
+             <v-btn 
+              color="primary" 
+              outlined
+              to="/encuesta-coronel/resultados"
+            >
               Ver resultados
             </v-btn>
           </div>
@@ -135,6 +143,7 @@ export default {
 
             const user_exists = await this.$store.dispatch('auth/userExists', this.email)
 
+
             if (!user_exists) {
               this.$store.dispatch('auth/createUser', {
                   name: this.name,
@@ -146,7 +155,7 @@ export default {
                   sector: this.sector,
               })
 
-              // this.$router.push('/encuesta-coronel/gamificacion')
+              this.$router.push('/encuesta-coronel/gamificacion')
             }
 
             if (user_exists) {
@@ -154,9 +163,9 @@ export default {
                   email: this.email,
                   password: window.btoa(this.email),
               })
-            }
 
-            // this.$cookies.set('current_encuesta_user', await this.$store.dispatch('auth/current'))
+              this.user_is_back = true
+            }
         }
     }
   },

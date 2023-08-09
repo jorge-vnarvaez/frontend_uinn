@@ -1,25 +1,25 @@
 <template>
-  <div class="py-32 max-w-screen-xl mx-auto">
+  <div class="py-24 lg:py-32 max-w-screen-xl mx-auto">
     <div
       v-if="!loading && !has_ended && combinations.length > 0"
-      class="h-screen flex flex-col justify-center align-center"
+      class="h-fit lg:h-screen flex flex-col justify-center align-center"
     >
       <span
-        class="block text-2xl lg:text-4xl font-black text-center text-[#1c355e]"
+        class="block text-xl lg:text-4xl font-black text-center text-[#1c355e]"
       >
         Como Comuna de Coronel, debemos enfocar nuestros esfuerzos en:
       </span>
 
       <!-- OPTIONS -->
       <div
-        class="grid grid-cols-12 mt-12 lg:gap-x-8 gap-y-8 lg:gap-y-0 px-8 lg:px-0"
+        class="grid grid-cols-12 mt-4 lg:mt-20 lg:gap-x-8 gap-y-8 lg:gap-y-0 px-8 lg:px-0"
       >
         <!-- OPTION 1 -->
         <div class="rounded-xl shadow-2xl col-span-12 lg:col-span-6">
           <v-card
             @click="optionSelected(combinations[first_option].first_phrase.id)"
-            class="px-8 py-8 d-flex flex-column align-center justify-center"
-            height="240"
+            class="px-8 py-2 lg:py-8 flex flex-col align-center justify-center"
+            :height="$vuetify.breakpoint.mobile ? 180 : 240"
             style="cursor: pointer"
             flat
           >
@@ -34,8 +34,8 @@
         <div class="rounded-xl shadow-2xl col-span-12 lg:col-span-6">
           <v-card
             @click="optionSelected(combinations[first_option].second_phrase.id)"
-            class="px-8 py-8 d-flex flex-column align-center justify-center"
-            height="240"
+            class="px-8 py-2 lg:py-8 flex flex-col align-center justify-center"
+            :height="$vuetify.breakpoint.mobile ? 180 : 240"
             style="cursor: pointer"
             flat
           >

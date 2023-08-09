@@ -13,11 +13,16 @@
     "@nuxtjs/moment": "^1.6.1",
     "cookie-universal-nuxt": "^2.2.2",
     "core-js": "^3.25.3",
+    "d3": "^7.8.5",
+    "d3-geo": "^3.1.0",
+    "d3-scale": "^4.0.2",
     "nuxt": "^2.15.8",
     "nuxt-start": "^2.15.8",
+    "topojson": "^3.0.2",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10",
+    "vue-tippy": "v4",
     "vuetify": "^2.6.10"
   },
   "devDependencies": {

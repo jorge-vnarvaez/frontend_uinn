@@ -35,6 +35,9 @@ export default {
   plugins: [
     { src: '~/plugins/spacingToClass.js' },
     { src: '~/plugins/objectToQueryString.js' },
+    { src: '~/plugins/gridTranspiler.js' },
+    { src: '~/plugins/prime-svg/prime-svg.js' },
+    { src: '~/plugins/tippy.js' },
     // { src: '~/plugins/fontawesome.js' },
   ],
 
@@ -58,9 +61,6 @@ export default {
     locales: ['es'],
     defaultTimezone: 'America/Santiago'
   },
-
-  ssr: true,
-  target: 'server',
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -99,6 +99,12 @@ export default {
         autoprefixer: {},
       },
     },
+    standalone: true,
+    loaders: {
+      vue: {
+        prettify: false
+      }
+    }
     // optimization :{
     //   splitChunks: {
     //     chunks: 'all',
