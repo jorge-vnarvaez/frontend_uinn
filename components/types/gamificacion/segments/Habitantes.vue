@@ -1,7 +1,7 @@
 <template>
   <div class="col-span-12">
     <v-card class="px-8 py-6 flex flex-col align-center" flat>
-      <span class="block mb-8 text-xl">b. Participantes de la Comuna</span>
+      <span class="block mb-8 text-xl">b. Participantes de la comuna</span>
 
       <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8 align-center">
         <div v-for="provincia, index in tfParticipantes" :key="index + 'p'" class="flex flex-col align-center">
@@ -31,11 +31,11 @@ export default {
       colors: ["#01adac", "#ff6469", "#253771", "#feb821"],
       labels: {
         "habitante": {
-          label: "Habitante de la Comuna",
+          label: "Habitante de la comuna",
           imagen: "https://i.ibb.co/0jZ3Q0H/Icono-1.png",
         },
         "no_habitante": {
-          label: "No habitante de la Comuna",
+          label: "No habitante de la comuna",
         },
       }
     };
