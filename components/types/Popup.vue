@@ -25,7 +25,7 @@
                     <p class="font-bold text-2xl text-neutral-900">Participa de esta encuesta sobre la vocación productiva de la comuna.</p>
 
                     <p class="text-lg lg:text-xl text-neutral-700 w-9/12">
-                        Comparte tu visión y ayudanos a construir un camino económico sostenible y justo para Coronel.
+                        Comparte tu visión y ayúdanos a construir un camino económico sostenible y justo para Coronel.
                     </p>
                     <v-btn to="/encuesta-coronel" color="#02aead" class="mt-4" depressed>
                         Participa

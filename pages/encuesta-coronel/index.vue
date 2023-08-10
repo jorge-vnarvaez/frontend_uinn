@@ -19,16 +19,16 @@
           <p class="text-center">
             Te damos la bienvenida a la
             <b class="font-black">"Encuesta de vocación productiva de la comuna de Coronel"</b>
-            diseñada especialmente para toda la comunidad de Coronel.
+            diseñada especialmente para toda la comunidad de la zona.
           </p>
 
           <p class="text-center">
             Con los resultados de esta encuesta nos ayudarás a construir un camino
-            económico sostenible y justo para la comuna de Coronel.
+            económico sostenible y justo para la comuna.
           </p>
 
           <p class="text-center">
-            Ya hemos identificado 16 focos de actuación para la comuna de Coronel.
+            Hemos identificado 16 focos de actuación.
             En esta encuesta te pediremos que nos ayudes a priorizarlos. ¿Quieres
             conocer los resultados parciales de esta encuesta? Haz
             <nuxt-link to="/encuesta-coronel/resultados" class="text-[#feb821] font-bold">clic aquí.</nuxt-link>
