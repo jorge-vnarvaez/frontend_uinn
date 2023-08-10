@@ -52,7 +52,7 @@
         género (masculino, femenino, otro, prefiere no decirlo).
         <span class="font-semibold">b. Participantes de la comuna:</span> La
         distribución de participantes en la priorización de focos de acuerdo a
-        si reside o no en la Comuna de Coronel.
+        si reside o no en la comuna de Coronel.
         <span class="font-semibold">c. Participantes según rango de edad:</span>
         La distribución de participantes en la priorización de focos en
         determinados rangos de edad.
