@@ -104,7 +104,7 @@ export default {
       name: "",
       nameRules: [
         (v) => !!v || "Debes indicar tu nombre completo",
-        (v) => /^[a-zA-Z\s]*$/.test(v) || "El nombre solo puede contener letras",
+       (v) => /^[\p{L}\s]*$/u.test(v) || "El nombre solo puede contener letras"
       ],
       email: "",
       emailRules: [

@@ -11,12 +11,12 @@
           <p class="text-4xl font-black">Resultados</p>
 
           <p class="text-2xl leading-loose lg:leading-loose">
-            ¡Conoce los temas que importan para la Comuna de Coronel! Los
+            ¡Conoce los temas que importan para la comuna de Coronel! Los
             resultados de la encuesta, recolectados de la participación de
-            habitantes y no habitantes de la Comuna de Coronel revelan los focos
+            habitantes y no habitantes de la comuna de Coronel revelan los focos
             de actuación más críticos que requieren nuestra atención. ¡No te
             pierdas esta valiosa perspectiva sobre los desafíos y oportunidades
-            que enfrenta la Comuna!
+            que enfrenta la comuna!
           </p>
 
           <div class="mt-9" v-if="!user_is_back">
@@ -123,7 +123,7 @@
                 (<v-icon color="white"> mdi-star-shooting ></v-icon>) de un foco se
                 ha de utilizar como un criterio de clasificación (priorización) en
                 escala de 1 a 100 de los focos que impulsarán el desarrollo en la
-                Comuna de Coronel. Usando la
+                comuna de Coronel. Usando la
                 <a
                   href="https://es.wikipedia.org/wiki/Inferencia_bayesiana"
                   target="_blank"
