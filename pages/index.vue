@@ -1,6 +1,6 @@
 <template>
   <div class="pb-0 w-full py-0">
-    <TypesPopup />
+    <!-- <TypesPopup /> -->
 
     <div v-for="section in page.sections" class="py-0" 
         :key="section.id" 
